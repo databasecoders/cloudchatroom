@@ -1,3 +1,8 @@
+var dotenv = require('dotenv');
+dotenv.config();
+
+var { DB_USER, DB_PASS, DB_NAME } = process.env;
+
 // let config = {
 //     local: {
 //         mysql: {
@@ -16,16 +21,24 @@
 
 var mysql = require("mysql");
 
-var config = require(__dirname + "/config.json")[process.env.APP_ENV || 'local'];
+var config = {
+    host: 'localhost',
+    port: 3306,
+    user: DB_USER,
+    password: DB_PASS,
+    database: DB_NAME
+}
 
-// Set up our connection information
-var connection = mysql.createConnection({
-    host: config.host,
-    port: config.port,
-    user: config.username,
-    password: config.password,
-    database: config.database
-});
+var connection;
+var host;
+
+if (process.env.JAWSDB_URL) {
+    var connection = mysql.createConnection(process.env.JAWSDB_URL);
+    host = 'JAWSDB';
+} else {
+    var connection = mysql.createConnection(config);
+    host = 'localhost'
+}
 
 // Connect to the database
 connection.connect(function (err) {
@@ -33,7 +46,7 @@ connection.connect(function (err) {
         console.error("error connecting: " + err.stack);
         return;
     }
-    console.log("connected as id " + connection.threadId);
+    console.log("connected as id " + host);
 });
 
 // Export connection
