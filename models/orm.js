@@ -12,6 +12,12 @@ var orm = {
         connection.query(queryString, searchCriteria, function (error, result) {
             callback(error, result);
         });
+    },
+    insertOne: function (query, callback) {
+        var queryString = "INSERT INTO ?? SET ?";
+        connection.query(queryString, [query.table, query.data], function (error, result) {
+            callback(error, result);
+        });
     }
 }
 
