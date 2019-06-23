@@ -1,4 +1,4 @@
-var connection = require("./config")
+var connection = require("../config/config")
 
 var orm = {
     select: function (queryObj, callback) {
