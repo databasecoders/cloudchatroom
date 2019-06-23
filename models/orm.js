@@ -24,6 +24,9 @@ var orm = {
         connection.query(queryString, [query.table, query.data], function (error, result) {
             callback(error, result);
         });
+    },
+    update: function (query, callback) {
+
     }
 }
 
