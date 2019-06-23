@@ -1,17 +1,16 @@
 require('dotenv').config();
-var user = require("./models/users")
-
+// var user = require("./models/users")
+//Dependencies
 var express = require('express');
 var app = express();
 var PORT = process.env.PORT || 9000;
-var config = require('./config/config');
-
-require("./routes/api-routes")(app);
+// var config = require('./config/config');
 
 app.use(express.static(__dirname + '/views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+require("./routes/api-routes")(app);
 
 
 app.listen(PORT, function () {
