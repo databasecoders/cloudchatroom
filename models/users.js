@@ -21,8 +21,18 @@ var users = {
             table: 'users',
             data: { user_name: request.body.username, user_password: request.body.password, user_image: request.body.userimage, friends_id: request.body.friends }
         }
-        orm.insertOne(query, function (error, data) {
+        orm.insert(query, function (error, data) {
             response.json(data)
+        })
+    },
+    deleteOne: function (request, response) {
+        var query = {
+            table: 'users',
+            // data - user has to enter password to delete profile
+            data: { user_password: request.body.password }
+        }
+        orm.delete(query, function (error, data) {
+            response.json()
         })
     }
 }
