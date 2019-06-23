@@ -13,8 +13,14 @@ var orm = {
             callback(error, result);
         });
     },
-    insertOne: function (query, callback) {
+    insert: function (query, callback) {
         var queryString = "INSERT INTO ?? SET ?";
+        connection.query(queryString, [query.table, query.data], function (error, result) {
+            callback(error, result);
+        });
+    },
+    delete: function (query, callback) {
+        var queryString = "DELETE FROM ?? WHERE ?"
         connection.query(queryString, [query.table, query.data], function (error, result) {
             callback(error, result);
         });
