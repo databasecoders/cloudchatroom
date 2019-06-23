@@ -15,6 +15,15 @@ var users = {
         orm.select(queryObj, function (error, data) {
             response.json(data);
         });
+    },
+    insertOne: function (request, response) {
+        var query = {
+            table: 'users',
+            data: { user_name: request.body.username, user_password: request.body.password, user_image: request.body.userimage, friends_id: request.body.friends }
+        }
+        orm.insertOne(query, function (error, data) {
+            response.json(data)
+        })
     }
 }
 
