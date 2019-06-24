@@ -48,15 +48,15 @@ let users = {
         console.log(response)
         var query = {
             table: 'users',
-            data: {
-                user_name: request.body.username,
-            },
+            data: body,
             equals: {
                 user_id: request.body.id
             }
         }
         orm.update(query, function (error, data) {
-            console.log(data)
+            updatedUser = request.body
+            updatedUser.user_id = request.body.id
+            response.json(updatedUser)
         })
     }
 }
