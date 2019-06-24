@@ -1,7 +1,11 @@
-var dotenv = require('dotenv');
+const dotenv = require('dotenv');
 dotenv.config();
 
-var { DB_USER, DB_PASS, DB_NAME } = process.env;
+const {
+    DB_USER,
+    DB_PASS,
+    DB_NAME
+} = process.env;
 
 // let config = {
 //     local: {
@@ -19,9 +23,9 @@ var { DB_USER, DB_PASS, DB_NAME } = process.env;
 // };
 // module.exports = config[process.env.APP_ENV || 'local'];
 
-var mysql = require("mysql");
+const mysql = require("mysql");
 
-var config = {
+let config = {
     host: 'localhost',
     port: 3306,
     user: DB_USER,
