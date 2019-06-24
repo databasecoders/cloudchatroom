@@ -4,6 +4,8 @@
     <title>User Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="styles/debug.css"> -->
     <link rel="stylesheet" href="styles/helpers.css">
     <style>
@@ -27,7 +29,9 @@
 
 <body>
     <section class="hero is-fullheight">
-        <div class="hero-head">
+
+        <!-- /////////// -->
+        <div class="hero-head ">
             <div class="columns is-mobile is-marginless heading has-text-weight-bold">
                 <div class="column left">
                     <p class="navbar-item has-text-black is-size-2">Chat App</p>
@@ -45,38 +49,50 @@
                 <div class="column right">
                     <p class="navbar-item has-text-black is-size-2 desktop">Home </p>
                     <p class="navbar-item has-text-black is-size-2 desktop">Account </p>
-                    <div class="navbar-item has-dropdown ">
-                        <a class="navbar-link">
-                            <!-- Docs -->
-                            <figure class="navbar-item image has-text-black is-size-2 center">
-                                <i class="fas fa-bars" style="width: 2rem; height: 2rem;"></i>
-                            </figure>
-                        </a>
 
-                        <div class="navbar-dropdown is-right is-active">
-                            <a class="navbar-item">
-                                Overview
-                            </a>
-                            <a class="navbar-item">
-                                Elements
-                            </a>
-                            <a class="navbar-item">
-                                Components
-                            </a>
-                            <hr class="navbar-divider">
-                            <div class="navbar-item">
-                                Version 0.7.5
+                    <div class="dropdown">
+                        <div class="dropdown is-right is-hoverable">
+                            <div class="dropdown-trigger">
+                                <!-- <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                                    <span>Hover me</span>
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    </span>
+                                </button> -->
+                                <figure class="navbar-item image has-text-black is-size-2 center">
+                                    <i class="fas fa-bars" style="width: 2rem; height: 2rem;"></i>
+                                </figure>
+                            </div>
+                            <div class="dropdown-menu " id="dropdown-menu4" role="menu">
+                                <div class="dropdown-content ">
+                                    <div class="dropdown-item">
+                                        <p>You can insert
+                                        </p>
+                                        <p>You can insert
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
 
                 </div>
             </div>
         </div>
 
     </section>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="frontjs\front.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="frontjs\front.js"></script>
