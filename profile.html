@@ -45,9 +45,31 @@
                 <div class="column right">
                     <p class="navbar-item has-text-black is-size-2 desktop">Home </p>
                     <p class="navbar-item has-text-black is-size-2 desktop">Account </p>
-                    <figure class="navbar-item image has-text-black is-size-2 center">
-                        <i class="fas fa-bars" style="width: 2rem; height: 2rem;"></i>
-                    </figure>
+                    <div class="navbar-item has-dropdown ">
+                        <a class="navbar-link">
+                            <!-- Docs -->
+                            <figure class="navbar-item image has-text-black is-size-2 center">
+                                <i class="fas fa-bars" style="width: 2rem; height: 2rem;"></i>
+                            </figure>
+                        </a>
+
+                        <div class="navbar-dropdown is-right is-active">
+                            <a class="navbar-item">
+                                Overview
+                            </a>
+                            <a class="navbar-item">
+                                Elements
+                            </a>
+                            <a class="navbar-item">
+                                Components
+                            </a>
+                            <hr class="navbar-divider">
+                            <div class="navbar-item">
+                                Version 0.7.5
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -56,3 +78,5 @@
 </body>
 
 </html>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="frontjs\front.js"></script>
