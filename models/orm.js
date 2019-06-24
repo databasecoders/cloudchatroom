@@ -1,6 +1,6 @@
-var connection = require("../config/config")
+const connection = require("../config/config")
 
-var orm = {
+let orm = {
     select: function (queryObj, callback) {
         var queryString = "SELECT * FROM ??";
         var searchCriteria = [queryObj.table];
@@ -22,6 +22,12 @@ var orm = {
     delete: function (query, callback) {
         var queryString = "DELETE FROM ?? WHERE ?"
         connection.query(queryString, [query.table, query.data], function (error, result) {
+            callback(error, result);
+        });
+    },
+    update: function (query, callback) {
+        var queryString = "UPDATE ?? SET ? WHERE ?"
+        connection.query(queryString, [query.table, query.data, query.equals], function (error, result) {
             callback(error, result);
         });
     }

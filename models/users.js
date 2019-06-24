@@ -1,8 +1,10 @@
-var orm = require("./orm")
+const orm = require("./orm")
 
-var users = {
+let users = {
     getAll: function (request, response) {
-        orm.select({ table: 'users' }, function (error, data) {
+        orm.select({
+            table: 'users'
+        }, function (error, data) {
             response.json(data);
         });
     },
@@ -19,7 +21,12 @@ var users = {
     insertOne: function (request, response) {
         var query = {
             table: 'users',
-            data: { user_name: request.body.username, user_password: request.body.password, user_image: request.body.userimage, friends_id: request.body.friends }
+            data: {
+                user_name: request.body.username,
+                user_password: request.body.password,
+                user_image: request.body.userimage,
+                friends_id: request.body.friends
+            }
         }
         orm.insert(query, function (error, data) {
             response.json(data)
@@ -29,10 +36,27 @@ var users = {
         var query = {
             table: 'users',
             // data - user has to enter password to delete profile
-            data: { user_password: request.body.password }
+            data: {
+                user_password: request.body.password
+            }
         }
         orm.delete(query, function (error, data) {
             response.json()
+        })
+    },
+    updateOne: function (request, response) {
+        console.log(response)
+        var query = {
+            table: 'users',
+            data: {
+                user_name: request.body.username,
+            },
+            equals: {
+                user_id: request.body.id
+            }
+        }
+        orm.update(query, function (error, data) {
+            console.log(data)
         })
     }
 }

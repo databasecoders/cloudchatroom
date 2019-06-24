@@ -23,5 +23,9 @@ module.exports = function (app) {
         user.deleteOne(request, response)
     })
 
+    app.put("/api/users/", function (request, response) {
+        user.updateOne(request, response)
+    })
+
     //multer (research)
 }
