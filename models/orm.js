@@ -25,12 +25,13 @@ let orm = {
             callback(error, result);
         });
     },
-    update: function (query, callback) {
-        var queryString = "UPDATE ?? SET ? WHERE ?"
-        connection.query(queryString, [query.table, query.data, query.equals], function (error, result) {
-            callback(error, result);
-        });
-    }
+    update: function (queryObject, callback) {
+        let queryString = 'UPDATE ?? SET ?? = ? WHERE ?? = ?';
+        connection.query(queryString, [queryObject.table, queryObject.column, queryObject.value, queryObject.row, queryObject.id], function (err, result) {
+            if (err) throw err;
+            callback(result)
+        })
+    },
 }
 
 module.exports = orm
