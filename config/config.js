@@ -7,22 +7,6 @@ const {
     DB_NAME
 } = process.env;
 
-// let config = {
-//     local: {
-//         mysql: {
-//             url: process.env.DB_URL
-//         },
-//         apiKeys: {}
-//     },
-//     prod: {
-//         mysql: {
-//             url: process.env.JAWSDB_URL
-//         },
-//         apiKeys: {}
-//     }
-// };
-// module.exports = config[process.env.APP_ENV || 'local'];
-
 const mysql = require("mysql");
 
 let config = {
