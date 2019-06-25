@@ -45,19 +45,16 @@ let users = {
         })
     },
     updateOne: function (request, response) {
-        console.log(response)
-        var query = {
-            table: 'users',
-            data: body,
-            equals: {
-                user_id: request.body.id
-            }
-        }
-        orm.update(query, function (error, data) {
-            updatedUser = request.body
-            updatedUser.user_id = request.body.id
-            response.json(updatedUser)
-        })
+        console.log(request)
+        orm.update({
+            table: "users",
+            column: "user_name",
+            value: request.body,
+            row: "user_id",
+            id: request.body.id
+        }, function (error, data) {
+            response.json(data);
+        });
     }
 }
 
