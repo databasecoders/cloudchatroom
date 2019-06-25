@@ -9,5 +9,5 @@ $(".signUpButton").on("click", function () {
         user_password: password,
         user_image: profilePic
     }
-    console.log(newUserInfo)
+    // make ajax, body is newuserinfo, send with json
 })
