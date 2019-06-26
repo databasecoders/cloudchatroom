@@ -10,8 +10,9 @@ module.exports = function (app) {
         user.getOne(request, response)
     });
 
-    app.post("/api/users/:id", function (request, response) {
+    app.post("/api/users/create", function (request, response) {
         user.insertOne(request, response)
+        console.log('******apiROUtes', response);
     });
 
     app.delete("/api/users/", function (request, response) {
