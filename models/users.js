@@ -19,17 +19,18 @@ let users = {
         });
     },
     insertOne: function (request, response) {
+        console.log('******INsertONe', request)
         var query = {
             table: 'users',
             data: {
                 user_name: request.body.username,
                 user_password: request.body.password,
-                user_image: request.body.userimage,
-                friends_id: request.body.friends
+                user_email: request.body.email,
             }
         }
         orm.insert(query, function (error, data) {
             response.json(data)
+            console.log(data, error)
         })
     },
     deleteOne: function (request, response) {
