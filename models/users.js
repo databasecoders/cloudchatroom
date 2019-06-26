@@ -19,7 +19,6 @@ let users = {
         });
     },
     insertOne: function (request, response) {
-        console.log('******INsertONe', request)
         var query = {
             table: 'users',
             data: {
@@ -30,7 +29,6 @@ let users = {
         }
         orm.insert(query, function (error, data) {
             response.json(data)
-            console.log(data, error)
         })
     },
     deleteOne: function (request, response) {
@@ -46,7 +44,6 @@ let users = {
         })
     },
     updateOne: function (request, response) {
-        console.log(request)
         orm.update({
             table: "users",
             column: "user_name",

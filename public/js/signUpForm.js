@@ -6,8 +6,6 @@ $(document).ready(function () {
         var password = $("#password").val()
         var email = $("#email").val()
 
-        console.log(name)
-
         var newUserInfo = {
             username: name,
             email: email,
@@ -18,9 +16,9 @@ $(document).ready(function () {
             type: "POST",
             url: "/api/users/create",
             data: newUserInfo
-        }).done(function () {
+        }).done(function (res) {
             console.log("success")
-            // need to redirect user to profile page
+            window.location.href = "/profile"
         });
     })
 })
