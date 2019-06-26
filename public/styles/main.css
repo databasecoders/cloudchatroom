@@ -1,0 +1,11 @@
+body {
+    background-color: yellow;
+}
+
+#column-left {
+    float: left;
+}
+
+#column-right {
+    float: right;
+}

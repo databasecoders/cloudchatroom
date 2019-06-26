@@ -1,7 +1,12 @@
+body {
+    background-color: yellow;
+}
+
+
    /* .is-lower-padding {
             padding-top: 2rem;
             padding-bottom: 2rem;
         } */
-        .section {
+        /* .section {
             padding-top: .75rem;
-        }
+        } */
