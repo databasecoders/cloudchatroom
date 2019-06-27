@@ -1,18 +1,18 @@
 .hero {
-    background: black url(../image/mountains2.jpg) center / cover;
-    text-shadow: 2px 2px solid white;
+    background: black url(../image/beach.jpg) center / cover;
+    /* text-shadow: 2px 2px white; */
 }
 
 @media (max-width: 1024px) {
     .hero {
-		background: black url(../image/20180113074447.JPG) center / cover;
+		background: url(../image/beach.JPG) center / cover;
 		text-shadow: 2px 2px white;
     }
 }
 
 @media (max-width: 768px) {
     .hero {
-        background: black url(../image/mobile.JPG) center / cover;
+        background: black url(../image/beach.JPG) center / cover;
     }
 }
 
@@ -47,11 +47,13 @@
 	}
 }
 
-footer {
-	position: relative;
-	text-align: center;
-	margin-top: -30px;
-	height: 40px;
-	clear: both;
-	background-color: green;
+.nav-item {
+    display: inline-block;
+    padding: 5px 5px;
+    margin-right: 10px;
+}
+
+
+  #title {
+	text-shadow: 2px 2px teal;
   }
