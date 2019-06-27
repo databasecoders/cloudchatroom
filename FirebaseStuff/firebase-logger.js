@@ -1,6 +1,15 @@
 let userRef = require("./firebase-controller");
 
-userRef.child("text").set({
-    time: "sometime",
-    log: "what was stated"
-});
+var textPayload = {
+    time: "3:40:12 PM",
+    text: "I like cereal." 
+};
+
+var sendText = function(textPayload){
+    userRef.child("text").push({
+        time: textPayload.time,
+        log: textPayload.text
+    })
+};
+
+sendText(textPayload);
