@@ -1,26 +1,42 @@
 $(document).ready(function () {
     $(".signUpButton").on("click", function () {
-        console.log("click")
         event.preventDefault()
-        var name = $("#username").val()
-        var password = $("#password").val()
-        var email = $("#email").val()
+        $("#usernameInvalid").hide()
+        $("#emailInvalid").hide()
+        $("#passwordInvalid").hide()
+        $("#checkboxInvalid").hide()
+        verifyUser()
+    })
+})
 
-        console.log(name)
 
-        var newUserInfo = {
+function verifyUser() {
+    let name = $("#username").val();
+    let password = $("#password").val();
+    let confirmPassword = $("#confirmPassword").val();
+    let email = $("#email").val();
+
+    if (name == "") {
+        $("#usernameInvalid").show()
+    } else if (!email.includes('@') || !email.includes('.')) {
+        $("#emailInvalid").show()
+    } else if (password !== confirmPassword) {
+        $("#passwordInvalid").show()
+    } else if (!$('input[type="checkbox"]' == ('checked'))) {
+        $("#checkboxInvalid").show()
+    } else {
+        let newUserInfo = {
             username: name,
             email: email,
             password: password
         }
-        console.log(newUserInfo)
         $.ajax({
             type: "POST",
             url: "/api/users/create",
             data: newUserInfo
-        }).done(function () {
+        }).done(function (res) {
             console.log("success")
-            // need to redirect user to profile page
+            window.location.href = "/profile"
         });
-    })
-})
+    }
+};
