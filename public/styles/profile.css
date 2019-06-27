@@ -2,7 +2,7 @@ body {
     background-color: yellow;
 }
 .hero {
-    background: black url(../image/20180113074447.JPG) center / cover;
+    background: black url(../image/grass.jpg) center / cover;
 }
 
 @media (max-width: 1024px) {

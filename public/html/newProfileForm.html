@@ -12,112 +12,114 @@
 </head>
 
 <body>
-    <section class="hero">
+  <section class="hero">
 
-        <div class="hero-head ">
-            <div class="columns is-mobile is-marginless heading has-text-weight-bold">
-                <div class="column left">
-                    <p class="navbar-item has-text-black is-size-2">Chat App</p>
-                    <!-- <figure class="navbar-item image">
+    <div class="hero-head ">
+      <div class="columns is-mobile is-marginless heading has-text-weight-bold">
+        <div class="column left">
+          <p class="navbar-item has-text-black is-size-2">Chat App</p>
+          <!-- <figure class="navbar-item image">
                                 <img src="images/tesla.svg" style="width: 6.25rem; height: 1rem;">
                             </figure> -->
+        </div>
+
+        <div class="column right">
+          <p class="navbar-item has-text-black is-size-2 desktop">Home </p>
+          <p class="navbar-item has-text-black is-size-2 desktop">Account </p>
+
+          <div class="dropdown">
+            <div class="dropdown is-right is-hoverable">
+              <div class="dropdown-trigger">
+
+                <figure class="navbar-item image has-text-black is-size-2 center">
+                  <i class="fas fa-bars" style="width: 2rem; height: 2rem;"></i>
+                </figure>
+              </div>
+              <div class="dropdown-menu " id="dropdown-menu4" role="menu">
+                <div class="dropdown-content ">
+                  <div class="dropdown-item">
+                    <a href="main.html">Main Page</a>
+                    <br>
+                    <a href="newProfileForm.html">Edit Profile</a>
+                    <br>
+                    <a href="signUpForm.html">Create Profile</a>
+                    <br>
+                    <a href="profile.html">Your Profile</a>
+
+                  </div>
                 </div>
-              
-                <div class="column right">
-                    <p class="navbar-item has-text-black is-size-2 desktop">Home </p>
-                    <p class="navbar-item has-text-black is-size-2 desktop">Account </p>
-
-                    <div class="dropdown">
-                        <div class="dropdown is-right is-hoverable">
-                            <div class="dropdown-trigger">
-                             
-                                <figure class="navbar-item image has-text-black is-size-2 center">
-                                    <i class="fas fa-bars" style="width: 2rem; height: 2rem;"></i>
-                                </figure>
-                            </div>
-                            <div class="dropdown-menu " id="dropdown-menu4" role="menu">
-                                <div class="dropdown-content ">
-                                    <div class="dropdown-item">
-                                            <a href="main.html">Main Page</a>
-                                            <br>
-                                            <a href="newProfileForm.html">Edit Profile</a>
-                                            <br>
-                                            <a href="signUpForm.html">Create New Profile</a>
-                                            
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
+              </div>
             </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container has-background-light" id="container">
+        <h1 class="title">
+          Edit Your Profile
+        </h1>
+        <p class="subtitle">
+          Info
+        </p>
+        <div class="field">
+          <label class="userName">Username</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Enter your name as it will appear on your profile">
+          </div>
+        </div>
+        <div class="field">
+          <label class="profilePic">Upload your profile picture</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Profile picture">
+          </div>
+        </div>
+        <div class="field">
+          <label class="backgroundPic">Upload your background picture</label>
+          <div class="control">
+            <input class="input" type="text" id="bkgimage" placeholder="Background picture">
+          </div>
+        </div>
+        <!--  -->
+        <div class="field">
+          <label class="label">Bio</label>
+          <div class="control">
+            <textarea class="textarea" id="bio" placeholder="Say something about yourself!"></textarea>
+          </div>
         </div>
 
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" id="update-button">Update Profile</button>
+          </div>
+
+        </div>
     </section>
-
-
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        Edit Your Profile
-      </h1>
-      <p class="subtitle">
-        Info
-      </p>
-      <div class="field">
-        <label class="userName">Username</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Enter your name as it will appear on your profile">
-        </div>
-      </div>
-      <div class="field">
-        <label class="profilePic">Upload your profile picture</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Profile picture">
-        </div>
-      </div>
-      <div class="field">
-        <label class="backgroundPic">Upload your background picture</label>
-        <div class="control">
-          <input class="input" type="text" id="bkgimage" placeholder="Background picture">
-        </div>
-      </div>
-      <!--  -->
-      <div class="field">
-        <label class="label">Bio</label>
-        <div class="control">
-          <textarea class="textarea" id="bio" placeholder="Say something about yourself!"></textarea>
-        </div>
-      </div>
-
-      <div class="field is-grouped">
-        <div class="control">
-          <button class="button is-link" id="update-button">Update Profile</button>
-        </div>
-
-      </div>
   </section>
 
-  
+
+ 
+
   <footer>
     copyright &lt;&copy;&gt; 2019
-</footer>
+  </footer>
 
 
   <script src="https://code.jquery.com/jquery.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"></script>
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"></script>
-      <script type="text/javascript" src="../js/newProfileForm.js"></script>
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="../js/newProfileForm.js"></script>
 </body>
 
 </html>

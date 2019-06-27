@@ -1,21 +1,20 @@
+.hero {
+    background: black url(../image/tree.jpg) center / cover;
+    text-shadow: 2px 2px solid white;
+}
 
-footer {
-	background-color:grey;
-	font-size: 15px;
-	text-align: center;
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	margin-bottom: 7px;
-	border: .5px solid silver;
-	line-height: 50px;
-  }
+@media (max-width: 1024px) {
+    .hero {
+		background: black url(../image/20180113074447.JPG) center / cover;
+		text-shadow: 2px 2px white;
+    }
+}
 
-
-
-
-
-
+@media (max-width: 768px) {
+    .hero {
+        background: black url(../image/mobile.JPG) center / cover;
+    }
+}
 
 .center, .center-column, .top, .right, .bottom, .left {
 	display: flex;
@@ -47,3 +46,12 @@ footer {
 		display: none;
 	}
 }
+
+footer {
+	position: relative;
+	text-align: center;
+	margin-top: -30px;
+	height: 40px;
+	clear: both;
+	background-color: green;
+  }

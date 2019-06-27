@@ -2,6 +2,18 @@ body {
     background-color: yellow;
 }
 
+button {
+    margin-bottom: 200px;
+    padding-bottom: 100px;
+}
+
+#container {
+    max-width: 500px;
+    padding-top: 20px;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-bottom: 20px;
+}
 
    /* .is-lower-padding {
             padding-top: 2rem;
@@ -10,3 +22,20 @@ body {
         /* .section {
             padding-top: .75rem;
         } */
+        .hero {
+            background: black url(../image/tree.jpg) center / cover;
+            text-shadow: 2px 2px solid white;
+        }
+        
+        @media (max-width: 1024px) {
+            .hero {
+                background: black url(../image/20180113074447.JPG) center / cover;
+                text-shadow: 2px 2px white;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                background: black url(../image/mobile.JPG) center / cover;
+            }
+        }

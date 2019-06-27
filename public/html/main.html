@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <section class="hero">
+    <section class="hero is-fullheight">
 
         <div class="hero-head ">
             <div class="columns is-mobile is-marginless heading has-text-weight-bold">
@@ -23,8 +23,8 @@
                 </div>
 
                 <div class="column right">
-                    <p class="navbar-item has-text-black is-size-2 desktop">Home </p>
-                    <p class="navbar-item has-text-black is-size-2 desktop">Account </p>
+                    <p class="navbar-item is-size-2 has-text-black desktop">Home </p>
+                    <p class="navbar-item is-size-2 has-text-black desktop">Account </p>
 
                     <div class="dropdown">
                         <div class="dropdown is-right is-hoverable">
@@ -41,8 +41,9 @@
                                         <br>
                                         <a href="newProfileForm.html">Edit Profile</a>
                                         <br>
-                                        <a href="signUpForm.html">Create New Profile</a>
-
+                                        <a href="signUpForm.html">Create Profile</a>
+                                        <br>
+                                        <a href="profile.html">Your Profile</a>
                                     </div>
                                 </div>
                             </div>
@@ -54,44 +55,44 @@
             </div>
         </div>
 
-    </section>
 
 
-    <section class="section">
         <div class="container">
             <h1 class="title">
-                Project 2 message board
+                Main page
             </h1>
 
 
-            <div class="columns">
-                <div class="column" id="column-left">
+            <div id="main-grid">
+                <div class="section has-background-light">
+                    <img src="../image/user_default.jpg" alt="user image" height="200" width="200">
+                    <div class="username is-size-5">Username:</div>
 
-                    <div class="field">
-                        <div class="control">
-                            <textarea class="textarea is-success" placeholder="message here"></textarea>
-                        </div>
-                        <a class="button is-success">Send</a>
-                    </div>
+                    <div class="bio is-size-5">Bio:</div>
+                    <br><br><br><br>
 
+                    <div class="date_joined is-size-5">Date Joined:</div>
+                    <textarea class="textarea is-success" placeholder="message here"></textarea>
 
+                    <a class="button is-success" id="button">Send</a>
                 </div>
-            </div>
 
-            <div class="columns">
-                <div class="column" id="column-right">
-                    <div id="chat-log">chat will be logged here</div>
+                <div class="section has-background-light">
+                    <p class="navbar-item is-size-4" id="chat-log">Chat Log</p>
                 </div>
+                <div id="chat"></div>
+
             </div>
+            <br><br><br><br><br><br><br><br><br><br>
 
 
 
     </section>
+
 
     <footer>
         copyright &lt;&copy;&gt; 2019
     </footer>
-
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="../js/main.js"></script>
