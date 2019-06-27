@@ -1,17 +1,35 @@
 $(document).ready(function () {
     $(".signUpButton").on("click", function () {
-        console.log("click")
         event.preventDefault()
-        var name = $("#username").val()
-        var password = $("#password").val()
-        var email = $("#email").val()
+        $("#usernameInvalid").hide()
+        $("#emailInvalid").hide()
+        $("#passwordInvalid").hide()
+        $("#checkboxInvalid").hide()
+        verifyUser()
+    })
+})
 
+
+function verifyUser() {
+    var name = $("#username").val();
+    var password = $("#password").val();
+    var confirmPassword = $("#confirmPassword").val();
+    var email = $("#email").val();
+
+    if (name == "") {
+        $("#usernameInvalid").show()
+    } else if (!email.includes('@') || !email.includes('.')) {
+        $("#emailInvalid").show()
+    } else if (password !== confirmPassword) {
+        $("#passwordInvalid").show()
+    } else if ($("#checkbox".checked = false)) {
+        $("#checkboxInvalid").show()
+    } else {
         var newUserInfo = {
             username: name,
             email: email,
             password: password
         }
-        console.log(newUserInfo)
         $.ajax({
             type: "POST",
             url: "/api/users/create",
@@ -20,5 +38,5 @@ $(document).ready(function () {
             console.log("success")
             window.location.href = "/profile"
         });
-    })
-})
+    }
+};
