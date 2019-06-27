@@ -23,7 +23,7 @@ admin.initializeApp({
 
 
 var database = admin.database();
-var userRef = database.ref("ChatLog/user_id");
+var userRef = database.ref("ChatLog/user_id/textLog"); //TO DO: Tweak to point to appropriate user ID text logs with ${}
 //var textRef = database.ref()
 
 module.exports = userRef;
