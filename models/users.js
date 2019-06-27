@@ -1,4 +1,5 @@
 const orm = require("./orm")
+let hashPass = require("hashpass")
 
 let users = {
     getAll: function (request, response) {
@@ -19,11 +20,13 @@ let users = {
         });
     },
     insertOne: function (request, response) {
+        let hashedPassword = hashPass(request.body.password)
+        console.log(hashedPassword)
         var query = {
             table: 'users',
             data: {
                 user_name: request.body.username,
-                user_password: request.body.password,
+                user_password: hashedPassword,
                 user_email: request.body.email,
             }
         }

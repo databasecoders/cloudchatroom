@@ -11,10 +11,10 @@ $(document).ready(function () {
 
 
 function verifyUser() {
-    var name = $("#username").val();
-    var password = $("#password").val();
-    var confirmPassword = $("#confirmPassword").val();
-    var email = $("#email").val();
+    let name = $("#username").val();
+    let password = $("#password").val();
+    let confirmPassword = $("#confirmPassword").val();
+    let email = $("#email").val();
 
     if (name == "") {
         $("#usernameInvalid").show()
@@ -22,10 +22,10 @@ function verifyUser() {
         $("#emailInvalid").show()
     } else if (password !== confirmPassword) {
         $("#passwordInvalid").show()
-    } else if ($("#checkbox".checked = false)) {
+    } else if (!$('input[type="checkbox"]' == ('checked'))) {
         $("#checkboxInvalid").show()
     } else {
-        var newUserInfo = {
+        let newUserInfo = {
             username: name,
             email: email,
             password: password
