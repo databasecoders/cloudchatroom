@@ -26,7 +26,7 @@ app.use(express.json());
 require("./routes/api-routes")(app);
 
 
-app.get("/signup", function (req, res) {
+app.get("/create", function (req, res) {
     res.sendFile(path.join(__dirname, "/public/html/signUpForm.html"));
 });
 
