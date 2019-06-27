@@ -86,8 +86,9 @@
                     <span class="icon is-small is-left">
                         <i class="fas fa-user"></i>
                     </span>
-
                 </p>
+                <p style="color:red;" hidden id="usernameInvalid">please enter a username</p>
+
             </div>
             <div class="field">
                 <p class="control has-icons-left has-icons-right">
@@ -95,8 +96,8 @@
                     <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
                     </span>
-
                 </p>
+                <p style="color:red;" hidden id="emailInvalid">email address is invalid</p>
             </div>
             <!--  -->
             <div class="field">
@@ -114,20 +115,22 @@
             </div>
             <div class="field">
                 <p class="control has-icons-left">
-                    <input class="input is-success" type="password" placeholder="Confirm Password" id="password">
+                    <input class="input is-success" type="password" placeholder="Confirm Password" id="confirmPassword">
                     <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>
                 </p>
+                <p style="color:red;" hidden id="passwordInvalid">passwords do not match</p>
             </div>
             <div class="field">
                 <div class="control">
                     <label class="checkbox">
-                        <input type="checkbox">
+                        <input type="checkbox" id="checkbox">
                         I agree to the <a href="#">terms and conditions</a>
                     </label>
                 </div>
             </div>
+            <p style="color:red;" hidden id="checkboxInvalid">please agree to our terms and conditions</p>
             <div class="field">
                 <section class="section">
                     <p class="control">
