@@ -13,19 +13,22 @@
 <body>
     <section class="hero is-fullheight">
 
-        <div class="hero-head ">
+        <div class="hero-head">
             <div class="columns is-mobile is-marginless heading has-text-weight-bold">
                 <div class="column left">
-                    <p class="navbar-item has-text-black is-size-2">Chat App</p>
+                    <p class="navbar-item has-text-black is-size-2" id="title">Chat App</p>
                     <!-- <figure class="navbar-item image">
                                 <img src="images/tesla.svg" style="width: 6.25rem; height: 1rem;">
                             </figure> -->
                 </div>
 
                 <div class="column right">
-                    <p class="navbar-item is-size-2 has-text-black desktop">Home </p>
-                    <p class="navbar-item is-size-2 has-text-black desktop">Account </p>
-
+                    
+                        <a href="main.html" class="nav-item has-text-black is-size-7">Main Page</a>
+                        <a href="newProfileForm.html" class="nav-item has-text-black is-size-7">Edit Profile</a>
+                        <a href="signUpForm.html" class="nav-item has-text-black is-size-7">Create Profile</a>
+                        <a href="profile.html" class="nav-item has-text-black is-size-7">Your Profile</a>
+                    
                     <div class="dropdown">
                         <div class="dropdown is-right is-hoverable">
                             <div class="dropdown-trigger">
@@ -34,7 +37,7 @@
                                     <i class="fas fa-bars" style="width: 2rem; height: 2rem;"></i>
                                 </figure>
                             </div>
-                            <div class="dropdown-menu " id="dropdown-menu4" role="menu">
+                            <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                                 <div class="dropdown-content ">
                                     <div class="dropdown-item">
                                         <a href="main.html">Main Page</a>
@@ -77,22 +80,23 @@
                     <a class="button is-success" id="button">Send</a>
                 </div>
 
-                <div class="section has-background-light">
-                    <p class="navbar-item is-size-4" id="chat-log">Chat Log</p>
+                <div class="section has-background-white" id="chat-box">
+                    <p class="navbar-item is-size-4" id="chat-label">Chat Box</p>
                 </div>
                 <div id="chat"></div>
 
             </div>
-            <br><br><br><br><br><br><br><br><br><br>
+            <!-- <br><br><br><br><br><br><br><br><br><br> -->
 
 
 
     </section>
 
-
-    <footer>
-        copyright &lt;&copy;&gt; 2019
-    </footer>
+    <nav class="navbar is-transparent is-fixed-bottom is-primary is-size-7 center">
+        <footer>
+            copyright &lt;&copy;&gt; 2019
+        </footer>
+    </nav>
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="../js/main.js"></script>
