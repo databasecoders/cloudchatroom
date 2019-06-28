@@ -22,7 +22,7 @@ function verifyUser() {
         $("#emailInvalid").show()
     } else if (password !== confirmPassword) {
         $("#passwordInvalid").show()
-    } else if (!$('input[type="checkbox"]' == ('checked'))) {
+    } else if (!$("#checkbox").is(":checked")) {
         $("#checkboxInvalid").show()
     } else {
         let newUserInfo = {

@@ -21,7 +21,6 @@ let users = {
     },
     insertOne: function (request, response) {
         let hashedPassword = hashPass(request.body.password)
-        console.log(hashedPassword)
         var query = {
             table: 'users',
             data: {
