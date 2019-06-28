@@ -25,7 +25,7 @@ let users = {
             table: 'users',
             data: {
                 user_name: request.body.username,
-                user_password: hashedPassword,
+                user_password: hashedPassword.hash,
                 user_email: request.body.email,
             }
         }

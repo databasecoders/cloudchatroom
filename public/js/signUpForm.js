@@ -3,6 +3,7 @@ $(document).ready(function () {
         event.preventDefault()
         $("#usernameInvalid").hide()
         $("#emailInvalid").hide()
+        $("#passwordEnter").hide()
         $("#passwordInvalid").hide()
         $("#checkboxInvalid").hide()
         verifyUser()
@@ -20,6 +21,8 @@ function verifyUser() {
         $("#usernameInvalid").show()
     } else if (!email.includes('@') || !email.includes('.')) {
         $("#emailInvalid").show()
+    } else if (password == "" || confirmPassword == "") {
+        $("#passwordEnter").show()
     } else if (password !== confirmPassword) {
         $("#passwordInvalid").show()
     } else if (!$("#checkbox").is(":checked")) {
