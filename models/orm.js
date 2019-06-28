@@ -2,6 +2,7 @@ const connection = require("../config/config")
 
 let orm = {
     select: function (queryObj, callback) {
+        // console.log("hello from here also")
         var queryString = "SELECT * FROM ??";
         var searchCriteria = [queryObj.table];
         if (queryObj.value) {

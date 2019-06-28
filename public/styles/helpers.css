@@ -21,10 +21,25 @@
 	.desktop {
 		display: none;
 	}
+ 	.hero {
+        background: black url(/image/20180113074447.JPG) center / cover;
+    }
+
 }
 
-@media (min-width: 1025px) {
+/* @media (min-width: 1025px) {
 	.mobilenavbar {
 		display: none;
 	}
+} */
+
+.hero {
+    background: black url(/image/20180113074447.JPG) center / cover;
+}
+
+
+@media (max-width: 768px) {
+    .hero {
+        background: black url(/image/mobile.JPG) center / cover;
+    }
 }

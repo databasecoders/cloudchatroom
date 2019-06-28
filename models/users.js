@@ -1,21 +1,24 @@
 const orm = require("./orm")
 
 let users = {
-    getAll: function (request, response) {
+    getAll: function (cb) {
+        console.log("hello");
+        // getting data is undefined
         orm.select({
             table: 'users'
         }, function (error, data) {
-            response.json(data);
+            console.log(data);
+            cb(data);
         });
     },
-    getOne: function (request, response) {
+    getOne: function (request, cb) {
         var queryObj = {
             table: 'users',
             column: 'user_id',
             value: request.params.id
         };
         orm.select(queryObj, function (error, data) {
-            response.json(data);
+            cb(data);
         });
     },
     insertOne: function (request, response) {
