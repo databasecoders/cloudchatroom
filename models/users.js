@@ -23,8 +23,17 @@ let users = {
             console.log("get one" + data[0].user_id);
         });
     },
+    selectByUsername: function (username, callback) {
+        let query = {
+            table: 'users',
+            value: username,
+            column: "user_name"
+        };
+        orm.select(query, callback);
+    },
     insertOne: function (request, response) {
-        let hashedPassword = hashPass(request.body.password)
+        let hashedPassword = hashPass(request.body.password.trim(), "salt")
+        console.log(request.body.password)
         var query = {
             table: 'users',
             data: {
@@ -59,7 +68,19 @@ let users = {
         }, function (error, data) {
             response.json(data);
         });
-    }
+    },
+    updateSession: function (user_name, uuid, callback) {
+        let query = {
+            table: 'users',
+            data: {
+                session: uuid
+            },
+            where: [{
+                user_name: user_name
+            }]
+        };
+        orm.update(query, callback);
+    },
 }
 
 module.exports = users

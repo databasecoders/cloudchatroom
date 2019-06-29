@@ -1,4 +1,5 @@
 const user = require("./../models/users")
+const loggedin = require("./../models/user-login")
 
 module.exports = function (app) {
 
@@ -12,8 +13,11 @@ module.exports = function (app) {
 
     app.post("/api/users/create", function (request, response) {
         user.insertOne(request, response)
-        console.log('******apiROUtes', response);
     });
+
+    app.post("/api/users/login", function (request, response) {
+        loggedin.login(request, response)
+    })
 
     app.delete("/api/users/", function (request, response) {
         user.deleteOne(request, response)

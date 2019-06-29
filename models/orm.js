@@ -32,6 +32,30 @@ let orm = {
             callback(result)
         })
     },
+    updateSession: function (username, uuid, callback) {
+        let query = {
+            table: 'users',
+            data: {
+                session: uuid
+            },
+            where: [{
+                username: username
+            }]
+        };
+        orm.update(query, callback);
+    },
+    removeSession: function (session, callback) {
+        let query = {
+            table: 'users',
+            data: {
+                session: null
+            },
+            where: [{
+                session: session
+            }]
+        };
+        orm.update(query, callback);
+    }
 }
 
 module.exports = orm
