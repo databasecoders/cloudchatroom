@@ -11,7 +11,7 @@ var PORT = process.env.PORT || 9000;
 // var config = require('./config/config');
 
 
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use(bodyParser.urlencoded({
@@ -22,6 +22,14 @@ app.use(express.urlencoded({
     extended: true
 }));
 app.use(express.json());
+
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+var routes = require("./controllers/userController.js");
+
+app.use(routes);
 
 require("./routes/api-routes")(app);
 
