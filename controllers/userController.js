@@ -23,7 +23,8 @@ router.get("/profile/:id", function (req, res) {
 
     user.getOne(req, function (data) {
         console.log(data);
-        res.render("profile", data.user_id);
+
+        res.render("profile", { user_id: data[0].user_id });
 
     });
 
