@@ -2,21 +2,25 @@ const orm = require("./orm")
 let hashPass = require("hashpass")
 
 let users = {
-    getAll: function (request, response) {
+    getAll: function (cb) {
+        console.log("hello");
+
         orm.select({
             table: 'users'
         }, function (error, data) {
-            response.json(data);
+            // console.log(data);
+
         });
     },
-    getOne: function (request, response) {
+    getOne: function (request, cb) {
         var queryObj = {
             table: 'users',
             column: 'user_id',
             value: request.params.id
         };
         orm.select(queryObj, function (error, data) {
-            response.json(data);
+            cb(data);
+            console.log("get one" + data[0].user_id);
         });
     },
     insertOne: function (request, response) {

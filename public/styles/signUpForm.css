@@ -23,19 +23,19 @@ button {
             padding-top: .75rem;
         } */
         .hero {
-            background: black url(../image/tree.jpg) center / cover;
+            background: black url(/image/tree.jpg) center / cover;
             text-shadow: 2px 2px solid white;
         }
         
         @media (max-width: 1024px) {
             .hero {
-                background: black url(../image/20180113074447.JPG) center / cover;
+                background: black url(/image/20180113074447.JPG) center / cover;
                 text-shadow: 2px 2px white;
             }
         }
         
         @media (max-width: 768px) {
             .hero {
-                background: black url(../image/mobile.JPG) center / cover;
+                background: black url(/image/mobile.JPG) center / cover;
             }
         }

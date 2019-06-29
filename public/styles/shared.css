@@ -1,18 +1,18 @@
 .hero {
-    background: black url(../image/beach.jpg) center / cover;
+    background: black url(/image/beach.jpg) center / cover;
     /* text-shadow: 2px 2px white; */
 }
 
 @media (max-width: 1024px) {
     .hero {
-		background: url(../image/beach.JPG) center / cover;
+		background: url(/image/beach.JPG) center / cover;
 		text-shadow: 2px 2px white;
     }
 }
 
 @media (max-width: 768px) {
     .hero {
-        background: black url(../image/beach.JPG) center / cover;
+        background: black url(/image/beach.JPG) center / cover;
     }
 }
 
