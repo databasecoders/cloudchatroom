@@ -8,6 +8,7 @@ create table users
   auto_increment,
 user_name varchar
   (30),
+  session int,
 user_email varchar
   (30),
 user_password varchar
@@ -19,7 +20,7 @@ PRIMARY KEY
 )
 
   insert into users
-    (user_name, user_email, user_password, user_image, friends_id)
+    (user_name, user_password, user_email, user_image, friends_id)
   values
     ("billybob", "piggy1234", "bil@gmail.com" , "https://www.google.com/search?q=pig+images&tbm=isch&source=iu&ictx=1&fir=KMo9Jgo6GeoHPM%253A%252CUjUhrOD9TLXe0M%252C_&vet=1&usg=AI4_-kTuxfFbXVhAvmQEvVszrgBoPjC63w&sa=X&ved=2ahUKEwi1rOe3yv3iAhUXWs0KHVeQB5MQ9QEwAHoECAcQBA#imgrc=KMo9Jgo6GeoHPM:", 2),
     ("spongebob", "sponge3232", "sponge@gmail.com", "https://www.google.com/search?q=spongebob&source=lnms&tbm=isch&sa=X&ved=0ahUKEwidho_3yv3iAhWQbs0KHW3tD68Q_AUIECgB&biw=1280&bih=578#imgrc=78xgJTSnSYbzyM:", 1),
