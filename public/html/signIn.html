@@ -24,13 +24,13 @@
         </div>
 
         <div class="column right">
-            <a href="main.html" class="nav-item has-text-black is-size-7">Main Page</a>
-            <a href="newProfileForm.html" class="nav-item has-text-black is-size-7">Edit Profile</a>
-            <a href="signUpForm.html" class="nav-item has-text-black is-size-7">Create Profile</a>
-            <a href="profile.html" class="nav-item has-text-black is-size-7">Your Profile</a>
+          <a href="main.html" class="nav-item has-text-black is-size-7">Main Page</a>
+          <a href="newProfileForm.html" class="nav-item has-text-black is-size-7">Edit Profile</a>
+          <a href="signUpForm.html" class="nav-item has-text-black is-size-7">Create Profile</a>
+          <a href="profile.html" class="nav-item has-text-black is-size-7">Your Profile</a>
 
-            <a href="signIn.html" class="button is-primary">Sign In</a>
-            <a class="button is-primary">Sign Out</a>
+          <a href="signIn.html" class="button is-primary">Sign In</a>
+          <a class="button is-primary">Sign Out</a>
           <div class="dropdown">
             <div class="dropdown is-right is-hoverable">
               <div class="dropdown-trigger">
@@ -69,25 +69,25 @@
         <p class="subtitle">
           Info
         </p>
-      
+
         <div class="field">
-                <label class="email">Email</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Email" id="signin-email">
-                </div>
-              </div>
+          <label class="username">Username</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Username" id="signin-username" value="billybob">
+          </div>
+        </div>
         <div class="field">
-                <p class="control has-icons-left">
-                    <input class="input is-success" type="password" placeholder="Password" id="signin-pw">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
-                    </span>
-                </p>
-            </div>
+          <p class="control has-icons-left">
+            <input class="input is-success" type="password" placeholder="Password" id="password" value="bil@gmail.com">
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
+        </div>
 
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-link" id="update-button">Sign In</button>
+            <button class="button is-link" id="signin-button">Sign In</button>
           </div>
 
         </div>
@@ -95,27 +95,52 @@
   </section>
 
 
- 
+
 
   <nav class="navbar is-transparent is-fixed-bottom is-primary is-size-7 center">
-      <footer>
-          copyright &lt;&copy;&gt; 2019
-      </footer>
+    <footer>
+      copyright &lt;&copy;&gt; 2019
+    </footer>
   </nav>
 
-
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
   <script type="text/javascript" src="../js/newProfileForm.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $("#signin-button").on("click", function () {
+        let username = $("#signin-username").val()
+        console.log(username)
+        let password = $("#password").val()
+        console.log(password)
+
+        let user = {
+          username: username,
+          password: password
+        }
+
+        $.ajax({
+          type: "POST",
+          url: "/api/users/login",
+          data: user
+        }).done(function (res) {
+          console.log("success")
+        });
+
+      })
+    })
+  </script>
+
+
 </body>
 
 </html>
