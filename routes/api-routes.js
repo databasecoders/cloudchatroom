@@ -19,6 +19,10 @@ module.exports = function (app) {
         loggedin.login(request, response)
     })
 
+    app.delete("/api/users/logout", function (request, response) {
+        loggedin.logout(request, response)
+    })
+
     app.delete("/api/users/", function (request, response) {
         user.deleteOne(request, response)
     })
