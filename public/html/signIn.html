@@ -30,7 +30,7 @@
           <a href="profile.html" class="nav-item has-text-black is-size-7">Your Profile</a>
 
           <a href="signIn.html" class="button is-primary">Sign In</a>
-          <a class="button is-primary">Sign Out</a>
+          <a class="button is-primary" id="signOutButton">Sign Out</a>
           <div class="dropdown">
             <div class="dropdown is-right is-hoverable">
               <div class="dropdown-trigger">
@@ -73,12 +73,12 @@
         <div class="field">
           <label class="username">Username</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Username" id="signin-username" value="billybob">
+            <input class="input" type="text" placeholder="Username" id="signin-username" value="alexc">
           </div>
         </div>
         <div class="field">
           <p class="control has-icons-left">
-            <input class="input is-success" type="password" placeholder="Password" id="password" value="bil@gmail.com">
+            <input class="input is-success" type="password" placeholder="Password" id="password" value="alex">
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
@@ -118,6 +118,7 @@
   <script>
     $(document).ready(function () {
       $("#signin-button").on("click", function () {
+        event.preventDefault()
         let username = $("#signin-username").val()
         console.log(username)
         let password = $("#password").val()
@@ -125,7 +126,7 @@
 
         let user = {
           username: username,
-          password: password
+          password: password,
         }
 
         $.ajax({
@@ -137,6 +138,29 @@
         });
 
       })
+
+      $("#signOutButton").on("click", function () {
+        event.preventDefault()
+
+        let username = $("#signin-username").val()
+        let password = $("#password").val()
+        console.log("signed out")
+
+        let user = {
+          username: username,
+          password: password,
+          session: null
+        }
+
+        $.ajax({
+          type: "DELETE",
+          url: "/api/users/logout",
+          data: user
+        }).done(function (res) {
+          console.log("success")
+        });
+      })
+
     })
   </script>
 
