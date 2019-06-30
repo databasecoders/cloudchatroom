@@ -25,37 +25,28 @@ let orm = {
             callback(error, result);
         });
     },
-    update: function (queryObject, callback) {
-        let queryString = 'UPDATE ?? SET ?? = ? WHERE ?? = ?';
-        connection.query(queryString, [queryObject.table, queryObject.column, queryObject.value, queryObject.row, queryObject.id], function (err, result) {
-            if (err) throw err;
-            callback(result)
-        })
+    update: function (query, callback) {
+        let queryString = "UPDATE ?? SET ? WHERE ?";
+        let statement = connection.query(queryString, [query.table, query.data, query.where[0]], function (error, result) {
+            callback(error, result);
+        });
+        if (query.debug) {
+            console.log(statement.sql);
+        }
     },
-    updateSession: function (username, uuid, callback) {
-        let query = {
-            table: 'users',
-            data: {
-                session: uuid
-            },
-            where: [{
-                username: username
-            }]
-        };
-        orm.update(query, callback);
-    },
-    removeSession: function (session, callback) {
-        let query = {
-            table: 'users',
-            data: {
-                session: null
-            },
-            where: [{
-                session: session
-            }]
-        };
-        orm.update(query, callback);
-    }
+    // updateSession: function (username, uuid, callback) {
+    //     console.log("UUID", uuid)
+    //     let query = {
+    //         table: 'users',
+    //         data: {
+    //             session: uuid
+    //         },
+    //         where: [{
+    //             username: username
+    //         }]
+    //     };
+    //     orm.update(query, callback);
+    // },
 }
 
 module.exports = orm
