@@ -8,7 +8,8 @@ create table users
   auto_increment,
 user_name varchar
   (30),
-  session int,
+  session varchar
+  (200),
 user_email varchar
   (30),
 user_password varchar
