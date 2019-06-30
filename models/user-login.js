@@ -8,18 +8,19 @@ let user = {
 
             console.log(result)
 
-            if (result.length && request.body.username === result[0].user_name) {
+            if (!result.length) {
+                console.log("user not found")
+            } else if (result.length && request.body.username === result[0].user_name) {
                 loginAttempt = hashPass(request.body.password.trim(), "salt");
 
             }
-            console.log("Passwords", loginAttempt.hash, result[0].user_password)
+            // console.log("Passwords", loginAttempt.hash, result[0].user_password)
             if (typeof loginAttempt != "undefined" && loginAttempt.hash === result[0].user_password) {
                 let uuid = uuidv1();
-                users.updateSession(result[0].user_name, uuid, function (error, result) {
+                users.updateSession(request.body.username, uuid, function (error, result) {
+                    console.log("UUID", uuid)
                     response.header('x-session-token', uuid).json(user);
                 });
-            } else {
-                console.log("not a valid user")
             }
         })
     },
