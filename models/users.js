@@ -65,18 +65,40 @@ let users = {
             response.json(data);
         });
     },
-    updateSession: function (user_name, uuid, callback) {
+    updateSession: function (username, uuid, callback) {
         let query = {
             table: 'users',
             data: {
                 session: uuid
             },
             where: [{
-                user_name: user_name
+                user_name: username
             }]
         };
         orm.update(query, callback);
     },
+    removeSession: function (username, callback) {
+        let query = {
+            table: 'users',
+            data: {
+                session: null
+            },
+            where: [{
+                user_name: username
+            }]
+        };
+        orm.update(query, callback);
+    },
+    // getMyself: function (session, callback) {
+    //     let query = {
+    //         table: 'users',
+    //         columns: ['user_id', 'user_name', 'user_password'],
+    //         where: [{
+    //             session: session
+    //         }]
+    //     };
+    //     orm.select(query, callback);
+    // },
 }
 
 module.exports = users
