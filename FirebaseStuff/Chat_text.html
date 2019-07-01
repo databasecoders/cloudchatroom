@@ -4,17 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chat Test Page</title>
-    <style>
-        div, #chatbox {
-        height: 200px;
-        width: 500px;
-        overflow: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Chat log</title>
 </head>
 <body>
+    <h1>Global Chat Room</h1>
     <div id="chatbox"></div>
     <button id="chatSubmit">Submit</button><input type="text" id="userInput">
-</body>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script>
+  // Your web app's Firebase configuration
+  var config = {
+    apiKey: "AIzaSyD7KxV0fowVohhM4cyInzNhdRzNoMwzuJg",
+    authDomain: "globalchat-99987.firebaseapp.com",
+    databaseURL: "https://globalchat-99987.firebaseio.com",
+    projectId: "globalchat-99987",
+    storageBucket: "globalchat-99987.appspot.com",
+    messagingSenderId: "1032153558028",
+    appId: "1:1032153558028:web:0073640b09cf08a6"
+  };
+    firebase.initializeApp(config);
+
+    var database = firebase.database();
+    getChat();
+
+    $("#chatSubmit").on("click", function(){
+        pushChat();
+    });
+
+    $(document).keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13'){
+            pushChat();
+        }
+    });
+
+    function UpdateChatBox(chat, time){
+        var TnC = time + " " + chat;
+        $("#chatbox").append($("<p>").text(TnC));
+    }
+
+    function pushChat(){
+        var dChat = $("#userInput").val();
+        if (dChat == "" || dChat == null){
+            alert("Please enter proper text.")
+        } else {
+            console.log("Current Text in chat is:")
+            console.log(dChat);
+            var dTime = moment().format("HH:mm");
+            console.log("Current Time is: ")
+            console.log(dTime);
+            $("#userInput").val("");
+            database.ref().push({
+            'dChat': dChat,
+            'dTime': dTime
+            });
+        }
+    };
+
+    function getChat(){
+        database.ref().on("child_added", function(child){
+            var dChat = child.val().dChat;
+            var dTime = child.val().dTime;
+            console.log(dChat);
+            console.log(dTime);
+            UpdateChatBox(dChat, dTime);
+        })
+    };
+    </script>
 </html>
