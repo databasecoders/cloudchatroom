@@ -25,7 +25,9 @@ app.use(express.json());
 
 var exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({
+    defaultLayout: "main"
+}));
 app.set("view engine", "handlebars");
 var routes = require("./controllers/userController.js");
 
@@ -44,6 +46,14 @@ app.get("/", function (rend, res) {
 
 app.get("/profile", function (rend, res) {
     res.sendFile(path.join(__dirname, "/public/html/profile.html"))
+});
+
+app.get("/signin", function (rend, res) {
+    res.sendFile(path.join(__dirname, "/public/html/signIn.html"))
+});
+
+app.get("/editprofile", function (rend, res) {
+    res.sendFile(path.join(__dirname, "/public/html/editprofile.html"))
 });
 
 app.listen(PORT, function () {
