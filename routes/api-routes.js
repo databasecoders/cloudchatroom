@@ -13,7 +13,7 @@ module.exports = function (app) {
     app.post("/api/chat", function(request, response){
         console.log("This api route was hit");
         console.log("Type: Post")
-        console.log(request.body.test);
+        console.log(request.body);
         //console.log(`You sent ${id}`);
         //chat.postingText(request, response);
     })
