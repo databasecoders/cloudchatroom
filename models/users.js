@@ -93,16 +93,26 @@ let users = {
         };
         orm.update(query, callback);
     },
-    // getMyself: function (session, callback) {
-    //     let query = {
-    //         table: 'users',
-    //         columns: ['user_id', 'user_name', 'user_password'],
-    //         where: [{
-    //             session: session
-    //         }]
-    //     };
-    //     orm.select(query, callback);
-    // },
+    getMyself: function (session, callback) {
+        let query = {
+            table: 'users',
+            columns: ['user_id', 'user_name', 'user_password', 'user_image'],
+            where: [{
+                session: session
+            }]
+        };
+        orm.select(query, callback);
+    },
+    getUserByID: function (id, callback) {
+        let query = {
+            table: 'users',
+            columns: ['user_id', 'user_name', 'user_password', 'user_image'],
+            where: [{
+                user_id: id
+            }]
+        };
+        orm.select(query, callback);
+    }
 }
 
 module.exports = users
