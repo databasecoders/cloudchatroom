@@ -1,6 +1,7 @@
 require('dotenv').config();
 var admin = require("firebase-admin");
 
+
 var firebaseCred = {
 type: process.env.type,
 project_id: process.env.project_id,
@@ -14,7 +15,7 @@ auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url,
 client_x509_cert_url: process.env.client_x509_cert_url
 };
 
-console.log(firebaseCred);
+//console.log(firebaseCred);
 
 admin.initializeApp({
     credential: admin.credential.cert(firebaseCred),
@@ -22,9 +23,9 @@ admin.initializeApp({
 });
 
 
-var database = admin.database();
-var userRef = database.ref("ChatLog/user_id/textLog"); //TO DO: Tweak to point to appropriate user ID text logs with ${}
-//var textRef = database.ref()
+var database = admin.database().ref();
+// var userRef = database.ref("ChatLog/user_id/textLog"); //TO DO: Tweak to point to appropriate user ID text logs with ${}
+// //var textRef = database.ref()
 
-module.exports = userRef;
+module.exports = database;
 

@@ -1,7 +1,13 @@
 const user = require("./../models/users")
 const loggedin = require("./../models/user-login")
+const gettingChat = require("../FirebaseStuff/firebase-listenForChat");
 
 module.exports = function (app) {
+
+    app.get("/api/chat", function(request, response){
+        console.log("This api route was hit");
+        gettingChat(request, response);
+    })
 
     app.get("/api/users", function (request, response) {
         user.getAll(request, response)
