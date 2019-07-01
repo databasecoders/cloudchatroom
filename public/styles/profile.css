@@ -2,17 +2,17 @@ body {
     background-color: yellow;
 }
 .hero {
-    background: black url(../image/grass.jpg) center / cover;
+    background: black url(/image/grass.jpg) center / cover;
 }
 
 @media (max-width: 1024px) {
     .hero {
-        background: black url(../image/20180113074447.JPG) center / cover;
+        background: black url(/image/20180113074447.JPG) center / cover;
     }
 }
 
 @media (max-width: 768px) {
     .hero {
-        background: black url(../image/mobile.JPG) center / cover;
+        background: black url(/image/mobile.JPG) center / cover;
     }
 }
