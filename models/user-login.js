@@ -6,7 +6,7 @@ let user = {
     login: function (request, response) {
         users.selectByUsername(request.body.username, function (error, result) {
 
-            console.log(result)
+            // console.log(result)
 
             if (!result.length) {
                 console.log("user not found")
@@ -14,12 +14,15 @@ let user = {
                 loginAttempt = hashPass(request.body.password.trim(), "salt");
 
             }
-            // console.log("Passwords", loginAttempt.hash, result[0].user_password)
+            console.log("Passwords", loginAttempt.hash, result[0].user_password)
             if (typeof loginAttempt != "undefined" && loginAttempt.hash === result[0].user_password) {
                 let uuid = uuidv1();
                 users.updateSession(request.body.username, uuid, function (error, result) {
+
                     console.log("UUID", uuid)
+
                     response.header('x-session-token', uuid).json(user);
+
                 });
             }
         })
