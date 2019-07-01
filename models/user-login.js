@@ -33,6 +33,22 @@ let user = {
                 'message': 'user logged out successfully'
             });
         });
+    },
+    getMyself: function (request, response) {
+        users.getMyself(request.headers['x-session-token'], function (error, result) {
+            response.json(result[0]);
+        });
+    },
+    getUserByID: function (request, response) {
+        users.getUserByID(request.params.id, function (error, result) {
+            if (result.length) {
+                response.json(result[0]);
+            } else {
+                response.status(404).json({
+                    'error': 'user not found'
+                });
+            }
+        });
     }
 }
 

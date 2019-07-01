@@ -131,7 +131,7 @@
           url: "/api/users/login",
           data: user
         }).done(function (res) {
-          // console.log(res.header)
+          console.log(res.header)
           // var myHeaders = new Headers();
           // var token = myHeaders.get('x-session-token')
 
@@ -146,11 +146,12 @@
           //     }, {});
           // }
 
-          var req = new XMLHttpRequest();
-          req.open('GET', document.location, false);
-          req.send(null);
-          var headers = parseHttpHeaders(req.getAllResponseHeaders());
-          console.log(headers)
+          // var req = new XMLHttpRequest();
+          // req.open('GET', document.location, false);
+          // req.send(null);
+          // var headers = parseHttpHeaders(req.getAllResponseHeaders());
+          // console.log(headers)
+
           // window.location.href = "/profile"
         });
       })
