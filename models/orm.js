@@ -1,4 +1,5 @@
-const connection = require("../config/config")
+const configObject = require("../config/config")
+let connection = configObject.connection;
 
 let orm = {
     select: function (queryObj, callback) {

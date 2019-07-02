@@ -1,14 +1,21 @@
 const user = require("./../models/users")
-
 const log = require("./../models/user-login")
-const gettingChat = require("../FirebaseStuff/firebase-listenForChat");
-
+const chat = require("../FirebaseStuff/firebase-chat");
 
 module.exports = function (app) {
 
     app.get("/api/chat", function(request, response){
         console.log("This api route was hit");
-        gettingChat(request, response);
+        console.log("Type: Get")
+        chat.gettingChat(request, response);
+    })
+
+    app.post("/api/chat", function(request, response){
+        console.log("This api route was hit");
+        console.log("Type: Post")
+        console.log(request.body);
+        //console.log(`You sent ${id}`);
+        //chat.postingText(request, response);
     })
 
     app.get("/api/users", function (request, response) {
