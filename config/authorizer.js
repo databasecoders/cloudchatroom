@@ -1,4 +1,4 @@
-let users = require('../models/users');
+let users = require('../models/user-login');
 
 let authorizer = {
     authenticate: function (request, response, next) {
@@ -9,9 +9,7 @@ let authorizer = {
                     'error': 'oops we did something bad'
                 });
             } else if (!result.length) {
-                response.status(401).json({
-                    'error': 'user must be logged in'
-                });
+                response.redirect("/api/users/login");
             } else {
                 next();
             }
