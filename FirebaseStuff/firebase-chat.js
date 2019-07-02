@@ -1,4 +1,6 @@
-let Chatref = require("./firebase-controller");
+let configObject = require("../config/config");
+
+let Chatref = configObject.database;
 
 //database.ref("ChatLog/user_id/textLog");
 let chat = {
