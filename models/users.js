@@ -2,14 +2,9 @@ const orm = require("./orm")
 let hashPass = require("hashpass")
 
 let users = {
-    getAll: function (cb) {
-        console.log("hello");
-
-        orm.select({
-            table: 'users'
-        }, function (error, data) {
-            // console.log(data);
-
+    getAll: function (request, response) {
+        orm.select({ table: 'users' }, function (error, data) {
+            response.json(data);
         });
     },
     getOne: function (request, cb) {
@@ -93,16 +88,26 @@ let users = {
         };
         orm.update(query, callback);
     },
-    // getMyself: function (session, callback) {
-    //     let query = {
-    //         table: 'users',
-    //         columns: ['user_id', 'user_name', 'user_password'],
-    //         where: [{
-    //             session: session
-    //         }]
-    //     };
-    //     orm.select(query, callback);
-    // },
+    getMyself: function (session, callback) {
+        let query = {
+            table: 'users',
+            columns: ['user_id', 'user_name', 'user_password', 'user_image'],
+            where: [{
+                session: session
+            }]
+        };
+        orm.select(query, callback);
+    },
+    getUserByID: function (id, callback) {
+        let query = {
+            table: 'users',
+            columns: ['user_id', 'user_name', 'user_password', 'user_image'],
+            where: [{
+                user_id: id
+            }]
+        };
+        orm.select(query, callback);
+    }
 }
 
 module.exports = users

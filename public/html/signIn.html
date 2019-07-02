@@ -24,13 +24,12 @@
         </div>
 
         <div class="column right">
-          <a href="main.html" class="nav-item has-text-black is-size-7">Main Page</a>
-          <a href="newProfileForm.html" class="nav-item has-text-black is-size-7">Edit Profile</a>
-          <a href="signUpForm.html" class="nav-item has-text-black is-size-7">Create Profile</a>
-          <a href="profile.html" class="nav-item has-text-black is-size-7">Your Profile</a>
-
-          <a href="signIn.html" class="button is-primary">Sign In</a>
-          <a class="button is-primary" id="signOutButton">Sign Out</a>
+          <a href="/" class="nav-item has-text-black is-size-7">Main Page</a>
+          <a href="/editprofile" class="nav-item has-text-black is-size-7">Edit Profile</a>
+          <a href="/create" class="nav-item has-text-black is-size-7">Create Profile</a>
+          <a href="/profile" class="nav-item has-text-black is-size-7">Your Profile</a>
+          <a href="/signin" class="button is-primary">Sign In</a>
+          <a class="button is-primary">Sign Out</a>
           <div class="dropdown">
             <div class="dropdown is-right is-hoverable">
               <div class="dropdown-trigger">
@@ -61,7 +60,7 @@
       </div>
     </div>
 
-    <section class="section">
+    <section class="section" id="signInBox">
       <div class="container has-background-light" id="container">
         <h1 class="title">
           Sign In
@@ -73,7 +72,7 @@
         <div class="field">
           <label class="username">Username</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Username" id="signin-username" value="alexc">
+            <input class="input" type="text" placeholder="Username" id="signin-username" value="alex">
           </div>
         </div>
         <div class="field">
@@ -120,9 +119,7 @@
       $("#signin-button").on("click", function () {
         event.preventDefault()
         let username = $("#signin-username").val()
-        console.log(username)
         let password = $("#password").val()
-        console.log(password)
 
         let user = {
           username: username,
@@ -134,9 +131,29 @@
           url: "/api/users/login",
           data: user
         }).done(function (res) {
-          console.log("success")
-        });
+          console.log(res.header)
+          // var myHeaders = new Headers();
+          // var token = myHeaders.get('x-session-token')
 
+          //passport jwt
+          // function parseHttpHeaders(httpHeaders) {
+          //   return httpHeaders.split("\n")
+          //     .map(x => x.split(/: */, 2))
+          //     .filter(x => x[0])
+          //     .reduce((ac, x) => {
+          //       ac[x[0]] = x[1];
+          //       return ac;
+          //     }, {});
+          // }
+
+          // var req = new XMLHttpRequest();
+          // req.open('GET', document.location, false);
+          // req.send(null);
+          // var headers = parseHttpHeaders(req.getAllResponseHeaders());
+          // console.log(headers)
+
+          // window.location.href = "/profile"
+        });
       })
 
       $("#signOutButton").on("click", function () {
@@ -148,12 +165,11 @@
 
         let user = {
           username: username,
-          password: password,
           session: null
         }
 
         $.ajax({
-          type: "DELETE",
+          type: "POST",
           url: "/api/users/logout",
           data: user
         }).done(function (res) {

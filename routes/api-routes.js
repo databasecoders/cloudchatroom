@@ -1,5 +1,5 @@
 const user = require("./../models/users")
-const loggedin = require("./../models/user-login")
+const log = require("./../models/user-login")
 const chat = require("../FirebaseStuff/firebase-chat");
 
 module.exports = function (app) {
@@ -31,11 +31,11 @@ module.exports = function (app) {
     });
 
     app.post("/api/users/login", function (request, response) {
-        loggedin.login(request, response)
+        log.login(request, response)
     })
 
     app.delete("/api/users/logout", function (request, response) {
-        loggedin.logout(request, response)
+        log.logout(request, response)
     })
 
     app.delete("/api/users/", function (request, response) {
