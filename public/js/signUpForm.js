@@ -6,40 +6,38 @@ $(document).ready(function () {
         $("#passwordEnter").hide()
         $("#passwordInvalid").hide()
         $("#checkboxInvalid").hide()
-        verifyUser()
+
+        let name = $("#username").val();
+        let password = $("#password").val();
+        let confirmPassword = $("#confirmPassword").val();
+        let email = $("#email").val();
+
+        if (name == "") {
+            $("#usernameInvalid").show()
+        } else if (!email.includes('@') || !email.includes('.')) {
+            $("#emailInvalid").show()
+        } else if (password == "" || confirmPassword == "") {
+            $("#passwordEnter").show()
+        } else if (password !== confirmPassword) {
+            $("#passwordInvalid").show()
+        } else if (!$("#checkbox").is(":checked")) {
+            $("#checkboxInvalid").show()
+        } else {
+            let newUserInfo = {
+                username: $("#username").val(),
+                password: $("#password").val(),
+                password_confirm: $("#confirmPassword").val(),
+                email: $("#email").val()
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/api/user",
+                data: newUserInfo
+            }).done(function (res) {
+                console.log("success")
+                window.location.href = "/"
+            })
+        }
     })
 })
-
-
-function verifyUser() {
-    let name = $("#username").val();
-    let password = $("#password").val();
-    let confirmPassword = $("#confirmPassword").val();
-    let email = $("#email").val();
-
-    if (name == "") {
-        $("#usernameInvalid").show()
-    } else if (!email.includes('@') || !email.includes('.')) {
-        $("#emailInvalid").show()
-    } else if (password == "" || confirmPassword == "") {
-        $("#passwordEnter").show()
-    } else if (password !== confirmPassword) {
-        $("#passwordInvalid").show()
-    } else if (!$("#checkbox").is(":checked")) {
-        $("#checkboxInvalid").show()
-    } else {
-        let newUserInfo = {
-            username: name,
-            email: email,
-            password: password
-        }
-        $.ajax({
-            type: "POST",
-            url: "/api/users/create",
-            data: newUserInfo
-        }).done(function (res) {
-            console.log("success")
-            window.location.href = "/profile"
-        });
-    }
-};
