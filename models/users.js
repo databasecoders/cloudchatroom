@@ -2,14 +2,9 @@ const orm = require("./orm")
 let hashPass = require("hashpass")
 
 let users = {
-    getAll: function (cb) {
-        console.log("hello");
-
-        orm.select({
-            table: 'users'
-        }, function (error, data) {
-            // console.log(data);
-
+    getAll: function (request, response) {
+        orm.select({ table: 'users' }, function (error, data) {
+            response.json(data);
         });
     },
     getOne: function (request, cb) {
