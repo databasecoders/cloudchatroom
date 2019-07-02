@@ -19,7 +19,7 @@ let users = {
             value: request.params.id
         };
         orm.select(queryObj, function (error, data) {
-            cb(data);
+            cb.json(data);
             console.log("get one" + data[0].user_id);
         });
     },
