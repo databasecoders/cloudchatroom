@@ -35,34 +35,20 @@ let user = {
         })
     },
     login: function (request, response) {
-        users.selectByEmail(request.body.username, function (error, result) {
-            if (error) {
-                console.log(error);
-                response.status(500).json({
-                    'error': 'oops we did something bad'
+        users.selectByUsername(request.body.username, function (error, result) {
+            user = result[0];
+            console.log(user)
+            loginAttempt = hashPass(request.body.password, user.salt);
+            if (loginAttempt.hash === user.password) {
+                let uuid = uuidv1();
+                users.updateSession(user.username, uuid, function (error, result) {
+                    delete user.user_password;
+                    delete user.salt;
+                    delete user.session;
+                    response.header('x-session-token', uuid).json(user);
                 });
-            } else if (!result.length) {
-                response.status(404).json({
-                    'error': 'user not found'
-                });
-            } else {
-                user = result[0];
-                loginAttempt = hashPass(request.body.password, user.salt);
-                if (loginAttempt.hash === user.password) {
-                    let uuid = uuidv1();
-                    users.updateSession(user.username, uuid, function (error, result) {
-                        delete user.password;
-                        delete user.salt;
-                        delete user.session;
-                        response.header('x-session-token', uuid).json(user);
-                    });
-                } else {
-                    response.status(401).json({
-                        'error': 'improper login credentials'
-                    });
-                }
             }
-        });
+        })
     },
     logout: function (request, response) {
         users.removeSession(request.headers['x-session-token'], function (error, result) {
