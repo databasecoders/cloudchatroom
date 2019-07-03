@@ -27,16 +27,17 @@ $(document).ready(function () {
                 username: $("#username").val(),
                 password: $("#password").val(),
                 password_confirm: $("#confirmPassword").val(),
-                email: $("#email").val()
+                email: $("#email").val(),
+                user_image: localStorage.getItem("user_image")
             }
-
+            console.log('*****', newUserInfo);
             $.ajax({
                 type: "POST",
                 url: "/api/user",
                 data: newUserInfo
             }).done(function (res) {
                 console.log("success")
-                window.location.href = "/"
+                // window.location.href = "/"
             })
         }
     })

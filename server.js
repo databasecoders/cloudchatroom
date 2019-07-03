@@ -56,6 +56,10 @@ app.get("/editprofile", function (rend, res) {
     res.sendFile(path.join(__dirname, "/public/html/editprofile.html"))
 });
 
+app.get("/photo", function (rend, res) {
+    res.sendFile(path.join(__dirname, "/public/html/photo.html"))
+});
+
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 });
