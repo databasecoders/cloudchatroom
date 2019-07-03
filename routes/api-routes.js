@@ -16,35 +16,35 @@ module.exports = function (app) {
         console.log(request.body);
         //console.log(`You sent ${id}`);
         //chat.postingText(request, response);
+    });
+
+    app.get("/api/users", function (request, response) {
+        user.getAll(request, response)
+    });
+
+    app.get("/api/users/:id", function (request, response) {
+        user.getOne(request, response)
+    });
+
+    app.post("/api/users/create", function (request, response) {
+        user.insertOne(request, response)
+    });
+
+    app.post("/api/users/login", function (request, response) {
+        log.login(request, response)
     })
 
-    // app.get("/api/users", function (request, response) {
-    //     user.getAll(request, response)
-    // });
+    app.delete("/api/users/logout", function (request, response) {
+        log.logout(request, response)
+    })
 
-    // app.get("/api/users/:id", function (request, response) {
-    //     user.getOne(request, response)
-    // });
+    app.delete("/api/users/", function (request, response) {
+        user.deleteOne(request, response)
+    })
 
-    // app.post("/api/users/create", function (request, response) {
-    //     user.insertOne(request, response)
-    // });
-
-    // app.post("/api/users/login", function (request, response) {
-    //     log.login(request, response)
-    // })
-
-    // app.delete("/api/users/logout", function (request, response) {
-    //     log.logout(request, response)
-    // })
-
-    // app.delete("/api/users/", function (request, response) {
-    //     user.deleteOne(request, response)
-    // })
-
-    // app.put("/api/users/", function (request, response) {
-    //     user.updateOne(request, response)
-    // })
+    app.put("/api/users/", function (request, response) {
+        user.updateOne(request, response)
+    })
 
     app.post("/api/user", function (request, response) {
         user.create(request, response);

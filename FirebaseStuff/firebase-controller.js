@@ -15,7 +15,7 @@ auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url,
 client_x509_cert_url: process.env.client_x509_cert_url
 };
 
-//console.log(firebaseCred);
+console.log(firebaseCred);
 
 admin.initializeApp({
     credential: admin.credential.cert(firebaseCred),
