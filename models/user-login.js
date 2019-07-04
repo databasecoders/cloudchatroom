@@ -38,7 +38,6 @@ let user = {
                         });
                     }
                 } else {
-                    console.log("response----------------------------", response);
                     respsonse.json({
                         user_id: result.insertId,
                         email: userRequest.email,
