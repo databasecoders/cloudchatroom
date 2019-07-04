@@ -86,9 +86,6 @@
                 }
                 sendData(textObject);
             });
-    
-    
-    
             let sendData = function(textObject){
                 $.ajax({
                 method: 'POST',
@@ -97,7 +94,23 @@
             }).then(function(data){
                 //confirmation I guess
             })
-            }
+            };
+            let getChat = function(){
+                $.ajax({
+                method: 'GET',
+                url: 'http://localhost:9000/api/chat'
+            }).then(function(chatlog){
+                console.log(chatlog);
+                
+                for(var log in chatlog.textlog) {
+                   if(chatlog.textlog.hasOwnProperty(log)) {
+                        var logValue = chatlog.textlog[log];
+                        console.log(logValue);
+                    }
+                }
+            });
+        };
+        getChat();
         </script>
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
