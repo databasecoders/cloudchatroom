@@ -21,7 +21,8 @@ let user = {
                 name: request.body.name,
                 user_email: request.body.email,
                 user_password: hashedPassword.hash,
-                salt: hashedPassword.salt
+                salt: hashedPassword.salt,
+                user_image: request.body.user_image
             };
             users.insertNew(userRequest, function (error, result) {
                 if (error) {
@@ -98,6 +99,7 @@ let user = {
         users.getUserByID(request.params.id, function (error, result) {
             if (result.length) {
                 response.json(result[0]);
+                console.log("hit");
             } else {
                 response.status(404).json({
                     error: 'user not found'
