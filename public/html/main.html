@@ -85,15 +85,17 @@
                  "userInput" : $("#userInput").val()
                 }
                 sendData(textObject);
+                $("#chatSubmit").val("");
+                $("#chat").empty();
+                getChat();
+
             });
             let sendData = function(textObject){
                 $.ajax({
                 method: 'POST',
                 url: 'http://localhost:9000/api/chat',
                 data: textObject
-            }).then(function(data){
-                //confirmation I guess
-            })
+            }).then(function(data){})
             };
             let getChat = function(){
                 $.ajax({
@@ -101,11 +103,12 @@
                 url: 'http://localhost:9000/api/chat'
             }).then(function(chatlog){
                 console.log(chatlog);
-                
                 for(var log in chatlog.textlog) {
                    if(chatlog.textlog.hasOwnProperty(log)) {
                         var logValue = chatlog.textlog[log];
                         console.log(logValue);
+                        console.log(logValue.log);
+                        $("#chat").append(($("<p>").text(logValue.log)));
                     }
                 }
             });
