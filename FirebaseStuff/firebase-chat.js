@@ -5,7 +5,7 @@ let Chatref = configObject.database;
 //database.ref("ChatLog/user_id/textLog");
 let chat = {
     gettingChat : function(request, response){
-        Chatref.once("value", function(snapshot, prevChildKey){  //TO-DO: Test grabbing different user chat-logs with different IDs
+        Chatref.on("value", function(snapshot, prevChildKey){  //TO-DO: Test grabbing different user chat-logs with different IDs
             var Chatlog = snapshot.val();
             response.json(Chatlog);
             
