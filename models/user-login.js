@@ -20,7 +20,8 @@ let user = {
             let userRequest = {
                 user_email: request.body.email,
                 user_password: hashedPassword.hash,
-                salt: hashedPassword.salt
+                salt: hashedPassword.salt,
+                user_image: request.body.user_image
             };
             users.insertNew(userRequest, function (error, result) {
                 if (error) {
@@ -37,9 +38,12 @@ let user = {
                         });
                     }
                 } else {
+                    console.log("response----------------------------", response);
                     respsonse.json({
                         user_id: result.insertId,
-                        email: userRequest.email
+                        email: userRequest.email,
+                        user_image: result.user_image
+
                     });
                 }
             });

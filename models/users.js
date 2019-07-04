@@ -16,7 +16,8 @@ let users = {
         };
         orm.select(queryObj, function (error, data) {
             cb(data);
-            console.log("get one" + data[0].user_id);
+            // console.log(data);
+            // console.log("get one" + data[0].user_id);
         });
     },
     insertNew: function (user, callback) {
