@@ -80,7 +80,12 @@
         </footer>
     </nav>
     <script>
-            $("#chatSubmit").on("click", function(){
+        let scrollSet = function(){
+        var element = document.getElementById("chat");
+        element.scrollTop = element.scrollHeight;
+        }
+
+        $("#chatSubmit").on("click", function(){
                 var textObject = {
                  "userInput" : $("#userInput").val()
                 }
@@ -89,7 +94,7 @@
                 $("#chat").empty();
                 getChat();
 
-            });
+        });
             let sendData = function(textObject){
                 $.ajax({
                 method: 'POST',
@@ -109,6 +114,7 @@
                         console.log(logValue);
                         console.log(logValue.log);
                         $("#chat").append(($("<p>").text(logValue.log)));
+                        scrollSet();
                     }
                 }
             });
