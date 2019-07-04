@@ -15,7 +15,7 @@ let users = {
             value: request.params.id
         };
         orm.select(queryObj, function (error, data) {
-            cb.json(data);
+            cb(data);
             console.log("get one" + data[0].user_id);
         });
     },
@@ -27,10 +27,11 @@ let users = {
         orm.insert(query, callback);
     },
     selectByUsername: function (username, callback) {
+        console.log(username)
         let query = {
             table: 'users',
             where: [{
-                username: username
+                user_name: username
             }]
         };
         orm.select(query, callback);
@@ -42,7 +43,7 @@ let users = {
                 session: uuid
             },
             where: [{
-                username: username
+                user_name: username
             }]
         };
         orm.update(query, callback);

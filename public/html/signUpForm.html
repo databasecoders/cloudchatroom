@@ -9,7 +9,8 @@
     <!-- <link rel="stylesheet" href="styles/debug.css"> -->
     <link rel="stylesheet" href="../styles/signUpForm.css">
     <link rel="stylesheet" href="../styles/shared.css">
-
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-storage.js"></script>
 
 
 </head>
@@ -32,31 +33,7 @@
                     <a href="/profile" class="nav-item has-text-black is-size-7">Your Profile</a>
                     <a href="/signin" class="button is-primary">Sign In</a>
                     <a class="button is-primary">Sign Out</a>
-
-                    <div class="dropdown">
-                        <div class="dropdown is-right is-hoverable">
-                            <div class="dropdown-trigger">
-
-                                <figure class="navbar-item image has-text-black is-size-2 center">
-                                    <i class="fas fa-bars" style="width: 2rem; height: 2rem;"></i>
-                                </figure>
-                            </div>
-                            <div class="dropdown-menu " id="dropdown-menu4" role="menu">
-                                <div class="dropdown-content ">
-                                    <div class="dropdown-item">
-                                        <a href="main.html">Main Page</a>
-                                        <br>
-                                        <a href="newProfileForm.html">Edit Profile</a>
-                                        <br>
-                                        <a href="signUpForm.html">Create Profile</a>
-                                        <br>
-                                        <a href="profile.html">Your Profile</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -123,6 +100,12 @@
                         </label>
                     </div>
                 </div>
+                <div>
+                    <div id="progress-bar"></div>
+                    <input type="file" id="upload-profile-photo-button">
+                    <div id="preview-of-upload"></div>
+
+                </div>
                 <p style="color:red;" hidden id="checkboxInvalid">please agree to our terms and conditions</p>
                 <div class="field">
                     <section class="section">
@@ -154,11 +137,12 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+        </script>
     <script type="text/javascript" src="../js/signUpForm.js"></script>
+    <script type="text/javascript" src="../js/app.js"></script>
 </body>
 
 </html>
