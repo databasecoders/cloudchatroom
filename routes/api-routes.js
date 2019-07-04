@@ -47,21 +47,25 @@ module.exports = function (app) {
         users.updateOne(request, response)
     })
 
+    app.post('/api/user', function (request, response) {
+        user.create(request, response);
+    });
+    app.post('/api/user/login', function (request, response) {
+        user.login(request, response);
+    });
 
-    app.post("/api/user", function (request, response) {
-        users.create(request, response);
+    app.get('/api/user/logout', function (request, response) {
+        user.logout(request, response);
     });
-    app.post("/api/user/login", function (request, response) {
-        users.login(request, response);
+    app.get('/api/user', authorizer.authenticate, function (request, response) {
+        user.getMyself(request, response);
     });
-    app.delete("/api/user/login", function (request, response) {
-        users.logout(request, response);
-    });
-    app.get("/api/user", authorizer.authenticate, function (request, response) {
-        users.getMyself(request, response);
-    });
-    app.get("/api/user/:id", authorizer.authenticate, function (request, response) {
-        users.getUserByID(request, response);
+
+    app.get('/api/user/:id', authorizer.authenticate, function (
+        request,
+        response
+    ) {
+        user.getUserByID(request, response);
     });
 };
 

@@ -7,14 +7,11 @@ $(document).ready(function () {
         $("#passwordInvalid").hide()
         $("#checkboxInvalid").hide()
 
-        let name = $("#username").val();
         let password = $("#password").val();
         let confirmPassword = $("#confirmPassword").val();
         let email = $("#email").val();
 
-        if (name == "") {
-            $("#usernameInvalid").show()
-        } else if (!email.includes('@') || !email.includes('.')) {
+        if (!email.includes('@') || !email.includes('.')) {
             $("#emailInvalid").show()
         } else if (password == "" || confirmPassword == "") {
             $("#passwordEnter").show()
@@ -24,7 +21,6 @@ $(document).ready(function () {
             $("#checkboxInvalid").show()
         } else {
             let newUserInfo = {
-                username: $("#username").val(),
                 password: $("#password").val(),
                 password_confirm: $("#confirmPassword").val(),
                 email: $("#email").val(),
@@ -37,7 +33,7 @@ $(document).ready(function () {
                 data: newUserInfo
             }).done(function (res) {
                 console.log("success")
-                // window.location.href = "/"
+                window.location.href = "/"
             })
         }
     })
