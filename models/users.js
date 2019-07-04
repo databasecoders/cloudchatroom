@@ -20,31 +20,31 @@ let users = {
         });
     },
     insertNew: function (user, callback) {
+        user.user_email = user.user_email.toLowerCase();
         let query = {
             table: 'users',
             data: user
         };
         orm.insert(query, callback);
     },
-    selectByUsername: function (username, callback) {
-        console.log(username)
+    selectByEmail: function (email, callback) {
         let query = {
             table: 'users',
             where: [{
-                user_name: username
-            }]
+                user_email: email
+            }] //Update
         };
         orm.select(query, callback);
     },
-    updateSession: function (username, uuid, callback) {
+    updateSession: function (email, uuid, callback) {
         let query = {
             table: 'users',
             data: {
                 session: uuid
             },
             where: [{
-                user_name: username
-            }]
+                user_email: email.toLowerCase()
+            }] //Update
         };
         orm.update(query, callback);
     },
@@ -63,7 +63,7 @@ let users = {
     getMyself: function (session, callback) {
         let query = {
             table: 'users',
-            columns: ['user_id', 'user_name', 'user_password', 'user_email'],
+            columns: ['user_email', 'user_id'],
             where: [{
                 session: session
             }]
@@ -73,7 +73,7 @@ let users = {
     getUserByID: function (id, callback) {
         let query = {
             table: 'users',
-            columns: ['user_id', 'user_name', 'user_password', 'user_email'],
+            columns: ['user_email', 'user_id', 'created', 'modified'],
             where: [{
                 user_id: id
             }]

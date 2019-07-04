@@ -1,65 +1,98 @@
+let hashPass = require('hashPass');
 let uuidv1 = require('uuid/v1');
 let users = require('./users');
-let hashPass = require("hashpass")
 
 let user = {
-    create: function (request, response) {
-
-        let hashedPassword = hashPass(request.body.password);
-        let userRequest = {
-            user_name: request.body.username,
-            user_email: request.body.email,
-            user_password: hashedPassword.hash,
-            salt: hashedPassword.salt,
-            user_image: request.body.user_image
-        };
-        users.insertNew(userRequest, function (error, result) {
-            if (error) {
-                console.log(error);
-                if (error.sqlMessage.includes('Duplicate')) {
-                    response.status(400).json({
-                        'error': 'email already exists in system'
-                    });
+    create: function (request, respsonse) {
+        if (
+            !request.body.email.includes('@') ||
+            !request.body.email.includes('.')
+        ) {
+            respsonse.status(400).json({
+                error: 'email is not valid'
+            });
+        } else if (request.body.password !== request.body.password_confirm) {
+            respsonse.status(400).json({
+                error: 'passwords do not match'
+            });
+        } else {
+            let hashedPassword = hashPass(request.body.password);
+            let userRequest = {
+                user_email: request.body.email,
+                user_password: hashedPassword.hash,
+                salt: hashedPassword.salt
+            };
+            users.insertNew(userRequest, function (error, result) {
+                if (error) {
+                    console.log(error);
+                    if (error.sqlMessage.includes('Duplicate')) {
+                        respsonse
+                            .status(400)
+                            .json({
+                                error: 'email already exists in system'
+                            });
+                    } else {
+                        respsonse.status(500).json({
+                            error: 'oops we did something bad'
+                        });
+                    }
                 } else {
-                    response.status(500).json({
-                        'error': 'oops we did something bad'
+                    respsonse.json({
+                        user_id: result.insertId,
+                        email: userRequest.email
                     });
                 }
-            } else {
-                response.json({
-                    user_id: result.insertId,
-                    user_name: userRequest.username,
-                    user_email: userRequest.email,
-                    user_password: userRequest.password
-                });
-            }
-        })
+            });
+        }
     },
     login: function (request, response) {
-        users.selectByUsername(request.body.username, function (error, result) {
-            user = result[0];
-            console.log(user)
-            loginAttempt = hashPass(request.body.password, user.salt);
-            if (loginAttempt.hash === user.password) {
-                let uuid = uuidv1();
-                users.updateSession(user.username, uuid, function (error, result) {
-                    delete user.user_password;
-                    delete user.salt;
-                    delete user.session;
-                    response.header('x-session-token', uuid).json(user);
+        users.selectByEmail(request.body.email, function (error, result) {
+            if (error) {
+                console.log(error);
+                response.status(500).json({
+                    error: 'oops we did something bad'
                 });
+            } else if (!result.length) {
+                response.status(404).json({
+                    error: 'user not found'
+                });
+            } else {
+                user = result[0];
+                loginAttempt = hashPass(request.body.password, user.salt);
+                if (loginAttempt.hash === user.user_password) {
+                    let uuid = uuidv1();
+                    users.updateSession(user.user_email, uuid, function (error, result) {
+                        delete user.user_password;
+                        delete user.salt;
+                        delete user.session;
+
+                        response.cookie('x_session_token', uuid);
+                        response.redirect('/');
+                    });
+                } else {
+                    response.status(401).json({
+                        error: 'improper login credentials'
+                    });
+                }
             }
-        })
+        });
     },
     logout: function (request, response) {
-        users.removeSession(request.headers['x-session-token'], function (error, result) {
+        users.removeSession(request.cookies['x-session-token'], function (
+            error,
+            result
+        ) {
+            response.clearCookie('x_session_token');
             response.json({
-                'message': 'user logged out successfully'
+                message: 'user logged out successfully'
             });
         });
     },
     getMyself: function (request, response) {
-        users.getMyself(request.headers['x-session-token'], function (error, result) {
+        users.getMyself(request.cookies['x_session_token'], function (
+            error,
+            result
+        ) {
             response.json(result[0]);
         });
     },
@@ -69,7 +102,7 @@ let user = {
                 response.json(result[0]);
             } else {
                 response.status(404).json({
-                    'error': 'user not found'
+                    error: 'user not found'
                 });
             }
         });
