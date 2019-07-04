@@ -3,21 +3,22 @@ let uuidv1 = require('uuid/v1');
 let users = require('./users');
 
 let user = {
-    create: function (request, respsonse) {
+    create: function (request, response) {
         if (
             !request.body.email.includes('@') ||
             !request.body.email.includes('.')
         ) {
-            respsonse.status(400).json({
+            response.status(400).json({
                 error: 'email is not valid'
             });
         } else if (request.body.password !== request.body.password_confirm) {
-            respsonse.status(400).json({
+            response.status(400).json({
                 error: 'passwords do not match'
             });
         } else {
             let hashedPassword = hashPass(request.body.password);
             let userRequest = {
+                name: request.body.name,
                 user_email: request.body.email,
                 user_password: hashedPassword.hash,
                 salt: hashedPassword.salt,
@@ -27,23 +28,23 @@ let user = {
                 if (error) {
                     console.log(error);
                     if (error.sqlMessage.includes('Duplicate')) {
-                        respsonse
+                        response
                             .status(400)
                             .json({
                                 error: 'email already exists in system'
                             });
                     } else {
-                        respsonse.status(500).json({
+                        response.status(500).json({
                             error: 'oops we did something bad'
                         });
                     }
                 } else {
-                    respsonse.json({
-                        user_id: result.insertId,
-                        email: userRequest.email,
-                        user_image: result.user_image
+                    // response.json({
+                    //     user_id: result.insertId,
+                    //     email: userRequest.email
+                    // });
+                    response.redirect('/')
 
-                    });
                 }
             });
         }
@@ -70,7 +71,7 @@ let user = {
                         delete user.session;
 
                         response.cookie('x_session_token', uuid);
-                        response.redirect('/');
+                        response.redirect('/main');
                     });
                 } else {
                     response.status(401).json({
@@ -81,22 +82,17 @@ let user = {
         });
     },
     logout: function (request, response) {
-        users.removeSession(request.cookies['x-session-token'], function (
+        users.removeSession(request.cookies['x_session_token'], function (
             error,
             result
         ) {
             response.clearCookie('x_session_token');
-            response.json({
-                message: 'user logged out successfully'
-            });
+            response.redirect('/')
         });
     },
-    getMyself: function (request, response) {
-        users.getMyself(request.cookies['x_session_token'], function (
-            error,
-            result
-        ) {
-            response.json(result[0]);
+    getMyself: function (request, res) {
+        users.getMyself(request.cookies['x_session_token'], function (error, result) {
+            res.json(result[0]);
         });
     },
     getUserByID: function (request, response) {

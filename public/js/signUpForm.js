@@ -21,9 +21,10 @@ $(document).ready(function () {
             $("#checkboxInvalid").show()
         } else {
             let newUserInfo = {
-                password: $("#password").val(),
-                password_confirm: $("#confirmPassword").val(),
-                email: $("#email").val(),
+                name: $("#name").val().trim(),
+                password: $("#password").val().trim(),
+                password_confirm: $("#confirmPassword").val().trim(),
+                email: $("#email").val().trim(),
                 user_image: localStorage.getItem("user_image")
             }
             console.log('*****', newUserInfo);
@@ -33,7 +34,8 @@ $(document).ready(function () {
                 data: newUserInfo
             }).done(function (res) {
                 console.log("success")
-                window.location.href = "/"
+                window.location.replace('/')
+
             })
         }
     })

@@ -1,8 +1,9 @@
-let users = require('../models/user-login');
+let users = require('../models/users');
 
 let authorizer = {
     authenticate: function (request, response, next) {
-        users.getMyself(request.cookies['x_session_token'], function (
+
+        users.getMyself(request, function (
             error,
             result
         ) {
