@@ -16,7 +16,8 @@ user_password varchar
   (30),
   salt varchar
   (1000),
-user_image longblob,
+user_image varchar
+  (1000),
 friends_id int,
 PRIMARY KEY
   (user_id)
