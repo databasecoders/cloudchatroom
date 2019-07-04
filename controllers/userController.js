@@ -13,7 +13,7 @@ router.get("/profile", function (req, res) {
 router.get("/profile/:id", function (req, res) {
     var condition = req.params.id;
     console.log("condition" + condition);
-    console.log(req);
+
     user.getOne(req, function (data) {
         console.log(data);
         // console.log("hello image null", data),

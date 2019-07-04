@@ -103,6 +103,7 @@ let user = {
         users.getUserByID(request.params.id, function (error, result) {
             if (result.length) {
                 response.json(result[0]);
+                console.log("hit");
             } else {
                 response.status(404).json({
                     error: 'user not found'

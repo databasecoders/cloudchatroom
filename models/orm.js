@@ -70,6 +70,18 @@ let orm = {
             console.log(statement.sql);
         }
     },
+    selectUser: function (queryObj, callback) {
+        var queryString = "SELECT * FROM ??";
+        var searchCriteria = [queryObj.table];
+        if (queryObj.value) {
+            queryString += " WHERE ?? = ?";
+            searchCriteria.push(queryObj.column);
+            searchCriteria.push(queryObj.value);
+        }
+        connection.query(queryString, searchCriteria, function (error, result) {
+            callback(error, result);
+        });
+    },
     _buildWhereStatement: function (query, queryString, searchCriteria) {
         queryString += " WHERE ";
         let whereString = [];
