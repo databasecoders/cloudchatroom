@@ -30,7 +30,8 @@ let user = {
                     user_id: result.insertId,
                     user_name: userRequest.username,
                     user_email: userRequest.email,
-                    user_password: userRequest.password
+                    user_password: userRequest.password,
+                    user_image: userRequest.user_image
                 });
             }
         })
