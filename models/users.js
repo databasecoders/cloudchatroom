@@ -80,7 +80,7 @@ let users = {
             }]
         };
         orm.select(query, callback);
-    }
+    },
 };
 
 module.exports = users;

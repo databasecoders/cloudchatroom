@@ -18,7 +18,7 @@
 
     <nav class="navbar is-transparent is-fixed-bottom is-primary is-size-7 center">
         <footer>
-            copyright &lt;&copy;&gt; 2019
+            copyright &copy; 2019
         </footer>
     </nav>
 
@@ -59,9 +59,8 @@
         <div class="column right">
 
 
-            <a href="/" class="nav-item has-text-black is-size-7">Main Page</a>
+            <a href="/main" class="nav-item has-text-black is-size-7">Your Profile</a>
             <a href="/editprofile" class="nav-item has-text-black is-size-7">Edit Profile</a>
-            <a href="/profile" class="nav-item has-text-black is-size-7">Your Profile</a>
             <a href="/api/user/logout" class="button is-primary">Sign Out</a>
 
 
@@ -73,15 +72,13 @@
 
 <div class="container">
     <h1 class="title">
-        Main page
+        ${response.name}'s profile!
     </h1>
 
 
     <div id="main-grid">
         <div class="section has-background-light">
-            <img src="${response.user_image}" alt="user image" height="200" width="200">
-            <div class="username is-size-5">Username: ${response.name}</div>
-            <div class="userId is-size-5">User ID: ${response.user_id}</div>
+            <img src="${response.user_image}" alt="user image" height="200" width="200"><br><br><br><br><br><br><br><br><br>
             <div class="bio is-size-5">Bio: ${response.user_bio}</div>
             <br><br><br><br>
 
