@@ -14,24 +14,6 @@
 <body>
   <section class="hero is-fullheight">
 
-    <!-- <div class="hero-head ">
-      <div class="columns is-mobile is-marginless heading has-text-weight-bold">
-        <div class="column left">
-          <p class="navbar-item has-text-black is-size-2">Chat App</p>
-        </div>
-
-        <div class="column right">
-          <a href="/" class="nav-item has-text-black is-size-7">Main Page</a>
-          <a href="/editprofile" class="nav-item has-text-black is-size-7">Edit Profile</a>
-          <a href="/create" class="nav-item has-text-black is-size-7">Create Profile</a>
-          <a href="/profile" class="nav-item has-text-black is-size-7">Your Profile</a>
-          <a href="/signin" class="button is-primary">Sign In</a>
-          <a class="button is-primary">Sign Out</a>
-
-        </div>
-      </div>
-    </div> -->
-
     <section class="section" id="signInBox">
       <div class="container has-background-light" id="container">
         <h1 class="title">
@@ -39,42 +21,16 @@
         </h1>
 
         <form action="/api/user/login" method="POST">
-          <input type="text" name="email" placeholder="email">
-          <input type="text" name="password" placeholder="password">
-          <button type="submit">Submit</button>
-        </form>
 
-
-        <!-- <div class="field">
-          <label class="email">Email</label>
-          <p class="control has-icons-left">
-            <input class="input" type="text" placeholder="Email" id="signin-email">
-            <span class="icon is-small is-left">
-              <i class="fas fa-user"></i>
-            </span>
-          </p>
-        </div>
-        <div class="field">
-          <p class="control has-icons-left">
-            <input class="input is-success" type="password" placeholder="Password" id="password">
-            <span class="icon is-small is-left">
-              <i class="fas fa-lock"></i>
-            </span>
-          </p>
-        </div>
+          <div><input type="text" name="email" placeholder="email"></div><br>
+          <div><input type="text" name="password" placeholder="password"></div><br>
+          <button class='button is-link' type="submit">Sign In</button><br>
+        </form> <br>
 
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-link" id="signin-button">Sign In</button>
-          </div> -->
-
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-link" id="signup-button">Sign Up</button>
+            <button style="float: right;" class="button is-link" id="signup-button">Sign Up</button>
           </div>
-
-          <!-- </div>
-    </section> -->
     </section>
 
     <nav class="navbar is-transparent is-fixed-bottom is-primary is-size-7 center">
@@ -96,49 +52,6 @@
     <script type="text/javascript" src="../js/newProfileForm.js"></script>
 
     <script>
-      // $(document).ready(function () {
-      //   $("#signin-button").on("click", function () {
-      //     event.preventDefault()
-
-      //     let user = {
-      //       email: $("#signin-email").val(),
-      //       password: $('#password').val()
-      //     }
-
-      //     $.ajax({
-      //       type: "POST",
-      //       url: "/api/user/login",
-      //       data: user
-      //     })
-      //     // .done(function (res) {
-      //     //   window.location.href = "/main"
-      //     // })
-
-      //     // window.location.href = "/profile"
-
-      //   })
-
-      //   $("#signOutButton").on("click", function () {
-      //     event.preventDefault()
-
-      //     let username = $("#signin-username").val()
-      //     let password = $("#password").val()
-      //     console.log("signed out")
-
-      //     let user = {
-      //       username: username,
-      //       session: null
-      //     }
-
-      //     $.ajax({
-      //       type: "POST",
-      //       url: "/api/users/logout",
-      //       data: user
-      //     }).done(function (res) {
-      //       console.log("success")
-      //     });
-      //   })
-
       $('#signup-button').on('click', function () {
         window.location.href = '/create'
       })
