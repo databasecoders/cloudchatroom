@@ -31,7 +31,6 @@ module.exports = function (app) {
             }
         })
     }, function (request, response) {
-        // user.getMyself(request, response);
         users.getMyself(request.cookies['x_session_token'], function (error, result) {
             response.json(result[0]);
         });
