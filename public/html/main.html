@@ -25,10 +25,10 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+        </script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -77,7 +77,7 @@
 
     <div id="main-grid">
         <div class="section has-background-light">
-            <img src="../image/user_default.jpg" alt="user image" height="200" width="200">
+            <img src="${response.user_image}" alt="user image" height="200" width="200">
             <div class="username is-size-5">Username: ${response.name}</div>
             <div class="userId is-size-5">User ID: ${response.user_id}</div>
             <div class="bio is-size-5">Bio: ${response.user_bio}</div>
@@ -89,6 +89,7 @@
         </div>
 
         <div class="section has-background-white" id="chat-box">
+            
             <p class="navbar-item is-size-4" id="chat-label">Chat Box</p>
         </div>
         <div id="chat"></div>
