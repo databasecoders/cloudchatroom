@@ -34,6 +34,10 @@ $(document).ready(function () {
                 data: newUserInfo
             }).done(function (res) {
                 console.log("success")
+                // console.log(res.user_id);
+                // var newUser = res.user_id;
+                // window.location.replace('/profile/' + newUser);
+                // window.location.href = "/"
                 window.location.replace('/')
 
             })

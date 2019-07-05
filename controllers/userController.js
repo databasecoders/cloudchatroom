@@ -19,7 +19,7 @@ router.get("/profile/:id", function (req, res) {
         // console.log("hello image null", data),
         res.render("profile", {
             user_id: data[0].user_id,
-            user_name: data[0].user_email,
+            user_email: data[0].user_email,
             user_image: data[0].user_image
         });
 

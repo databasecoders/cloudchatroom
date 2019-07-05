@@ -3,6 +3,12 @@
     /* text-shadow: 2px 2px white; */
 }
 
+h3 {
+    font-size: 50px;
+    /* font-family: 'DM Serif Text', serif; */
+    text-align: center;
+}
+
 @media (max-width: 1024px) {
     .hero {
 		background: url(/image/beach.JPG) center / cover;
