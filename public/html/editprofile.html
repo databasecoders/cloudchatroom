@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>newProfilePage</title>
+  <title>Edit Profile</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
   <!-- <link rel="stylesheet" href="styles/debug.css"> -->
   <link rel="stylesheet" href="../styles/shared.css">
@@ -160,14 +160,16 @@
     </div>
 </section>
 </section>`);
+      $(document).ready(function () {
+        $('#update-button').click(function () {
+          event.preventDefault()
+          window.location.href = '/main';
+        });
+      })
     });
 
 
-    $(document).ready(function () {
-      $("#update-button").on("click", function () {
-        window.location.replace('/main')
-      })
-    })
+
     //     let updatedUserInfo = {
     //       name: $(".name").val(),
     //       password: $(".password").val(),
