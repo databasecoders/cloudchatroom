@@ -46,14 +46,15 @@
 
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input is-primary" type="name" placeholder="Name" id="name">
+                        <input class="input is-primary" type="name" placeholder="Name" id="name" value="alex">
                     </p>
-
+                    <p style="color:red;" hidden id="nameInvalid">name is invalid</p>
                 </div>
                 <!--  -->
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input is-primary" type="name" placeholder="Email" id="email">
+                        <input class="input is-primary" type="name" placeholder="Email" id="email"
+                            value="alexbcahn@gmail.com">
                         <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
                         </span>
@@ -62,7 +63,8 @@
                 </div>
                 <div class="field">
                     <p class="control has-icons-left">
-                        <input class="input is-success" type="password" placeholder="Password" id="password">
+                        <input class="input is-success" type="password" placeholder="Password" id="password"
+                            value="alex">
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>
                         </span>
@@ -71,13 +73,23 @@
                 <div class="field">
                     <p class="control has-icons-left">
                         <input class="input is-success" type="password" placeholder="Confirm Password"
-                            id="confirmPassword">
+                            id="confirmPassword" value="alex">
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>
                         </span>
                     </p>
                     <p style="color:red;" hidden id="passwordInvalid">passwords do not match</p>
                     <p style="color:red;" hidden id="passwordEnter">please enter a password</p>
+                </div>
+                <div class="field">
+                    <p class="control has-icons-left">
+                        <input class="input is-success" type="text" placeholder="Bio" id="userBio"
+                            value="killin the game since 90">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </p>
+                    <p style="color:red;" hidden id="bioInvalid">Please add a brief description</p>
                 </div>
                 <div class="field">
                     <div class="control">
