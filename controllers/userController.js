@@ -12,14 +12,15 @@ router.get("/profile", function (req, res) {
 
 router.get("/profile/:id", function (req, res) {
     var condition = req.params.id;
-    console.log(condition);
+    console.log("condition" + condition);
 
     user.getOne(req, function (data) {
         console.log(data);
-
+        // console.log("hello image null", data),
         res.render("profile", {
             user_id: data[0].user_id,
-            user_name: data[0].user_name,
+            user_name: data[0].user_email,
+            user_image: data[0].user_image
         });
 
     });

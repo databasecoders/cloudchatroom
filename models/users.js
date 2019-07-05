@@ -14,8 +14,9 @@ let users = {
             column: 'user_id',
             value: request.params.id
         };
-        orm.select(queryObj, function (error, data) {
+        orm.selectUser(queryObj, function (error, data) {
             cb(data);
+            console.log(data);
             console.log("get one" + data[0].user_id);
         });
     },
@@ -63,7 +64,7 @@ let users = {
     getMyself: function (session, callback) {
         let query = {
             table: 'users',
-            columns: ['user_email', 'user_id'],
+            columns: ['user_email', 'user_id', 'name', 'user_password', 'user_image', 'user_bio', 'salt'],
             where: [{
                 session: session
             }]
@@ -73,7 +74,7 @@ let users = {
     getUserByID: function (id, callback) {
         let query = {
             table: 'users',
-            columns: ['user_email', 'user_id', 'created', 'modified'],
+            columns: ['user_email', 'user_id', 'name', 'user_password', 'user_image', 'user_bio'],
             where: [{
                 user_id: id
             }]

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>newProfilePage</title>
+  <title>Edit Profile</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
   <!-- <link rel="stylesheet" href="styles/debug.css"> -->
   <link rel="stylesheet" href="../styles/shared.css">
@@ -12,24 +12,22 @@
 </head>
 
 <body>
-  <section class="hero is-fullheight">
+  <!-- <section class="hero is-fullheight">
 
     <div class="hero-head ">
       <div class="columns is-mobile is-marginless heading has-text-weight-bold">
         <div class="column left">
           <p class="navbar-item has-text-black is-size-2">Chat App</p>
-        
+
         </div>
 
         <div class="column right">
-          <a href="/" class="nav-item has-text-black is-size-7">Main Page</a>
+          <a href="/main" class="nav-item has-text-black is-size-7">Main Page</a>
           <a href="/editprofile" class="nav-item has-text-black is-size-7">Edit Profile</a>
-          <a href="/create" class="nav-item has-text-black is-size-7">Create Profile</a>
           <a href="/profile" class="nav-item has-text-black is-size-7">Your Profile</a>
-          <a href="/signin" class="button is-primary">Sign In</a>
-          <a class="button is-primary">Sign Out</a>
+          <a href="/api/user/logout" class="button is-primary">Sign Out</a>
 
-      
+
 
         </div>
       </div>
@@ -40,9 +38,6 @@
         <h1 class="title">
           Edit Your Profile
         </h1>
-        <p class="subtitle">
-          Info
-        </p>
         <div class="field">
           <label class="userName">Username</label>
           <div class="control">
@@ -50,22 +45,15 @@
           </div>
         </div>
         <div class="field">
-          <label class="profilePic">Upload your profile picture</label>
+          <label class="password">Password</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Profile picture">
+            <input class="input" type="text" placeholder="Update your password">
           </div>
         </div>
         <div class="field">
-          <label class="backgroundPic">Upload your background picture</label>
+          <label class="bio">Bio</label>
           <div class="control">
-            <input class="input" type="text" id="bkgimage" placeholder="Background picture">
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Bio</label>
-          <div class="control">
-            <textarea class="textarea" id="bio" placeholder="Say something about yourself!"></textarea>
+            <textarea class="textarea" id="bio" placeholder="Update your bio"></textarea>
           </div>
         </div>
 
@@ -76,9 +64,9 @@
 
         </div>
     </section>
-  </section>
+  </section> -->
 
-
+  <div id="main"></div>
 
 
   <nav class="navbar is-transparent is-fixed-bottom is-primary is-size-7 center">
@@ -87,9 +75,118 @@
     </footer>
   </nav>
 
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="../js/newProfileForm.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="../js/newProfileForm.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script>
+    $.ajax({
+      url: '/api/user',
+      method: 'GET',
+      statusCode: {
+        401: function () {
+          window.location.replace('/');
+        }
+      }
+    }).then(function (response) {
+      console.log(response);
+      $('#main').html(`   
+
+          <section class="hero is-fullheight">
+
+<div class="hero-head ">
+  <div class="columns is-mobile is-marginless heading has-text-weight-bold">
+    <div class="column left">
+      <p class="navbar-item has-text-black is-size-2">Chat App</p>
+
+    </div>
+
+    <div class="column right">
+      <a href="/main" class="nav-item has-text-black is-size-7">Main Page</a>
+      <a href="/editprofile" class="nav-item has-text-black is-size-7">Edit Profile</a>
+      <a href="/profile" class="nav-item has-text-black is-size-7">Your Profile</a>
+      <a href="/api/user/logout" class="button is-primary">Sign Out</a>
+
+
+
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container has-background-light" id="container">
+    <h1 class="title">
+      Edit Your Profile
+    </h1>
+    <div class="field">
+      <label class="name">Name</label>
+      <div class="control">
+        <textarea class="textarea" id="name" placeholder=>${response.name}</textarea>
+      </div>
+    </div>
+    <div class="field">
+      <label class="email">Email</label>
+      <div class="control">
+        <textarea class="textarea" id="email" placeholder=>${response.user_email}</textarea>
+      </div>
+    </div>
+    <div class="field">
+      <label class="password">Password</label>
+      <div class="control">
+        <input class="input" type="text" placeholder= '*****'>
+      </div>
+    </div>
+    <div class="field">
+      <label class="bio">Bio</label>
+      <div class="control">
+        <textarea class="textarea" id="bio" placeholder=>${response.user_bio}</textarea>
+      </div>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link" id="update-button">Update Profile</button>
+      </div>
+
+    </div>
+</section>
+</section>`);
+      $(document).ready(function () {
+        $('#update-button').click(function () {
+          event.preventDefault()
+          window.location.href = '/main';
+        });
+      })
+    });
+
+
+
+    //     let updatedUserInfo = {
+    //       name: $(".name").val(),
+    //       password: $(".password").val(),
+    //       bio: $("#userBio").val(),
+    //       email: $("#email").val()
+    //     }
+    //     $.ajax({
+    //       type: "POST",
+    //       url: "/api/user",
+    //       data: updatedUserInfo
+    //     }).done(function (res) {
+    //       console.log("success")
+    //       window.location.replace('/main')
+
+    //     })
+    //   })
+    // });
+  </script>
 </body>
 
 </html>

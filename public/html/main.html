@@ -83,56 +83,88 @@
             copyright &lt;&copy;&gt; 2019
         </footer>
     </nav>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="../js/main.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>
-        let scrollSet = function(){
-        var element = document.getElementById("chat");
-        element.scrollTop = element.scrollHeight;
-        }
-
-        $("#chatSubmit").on("click", function(){
-                var textObject = {
-                 "userInput" : $("#userInput").val()
+        $.ajax({
+            url: '/api/user',
+            method: 'GET',
+            statusCode: {
+                401: function () {
+                    window.location.replace('/');
                 }
-                sendData(textObject);
-                $("#chatSubmit").val("");
-                $("#chat").empty();
-                getChat();
+            }
+        }).then(function (response) {
+            console.log(response);
+            $('#main').html(`    
+            
+            <section class="hero is-fullheight">
 
+<div class="hero-head">
+    <div class="columns is-mobile is-marginless heading has-text-weight-bold">
+        <div class="column left">
+            <p class="navbar-item has-text-black is-size-2" id="title">Chat App</p>
+
+        </div>
+
+        <div class="column right">
+
+
+            <a href="/" class="nav-item has-text-black is-size-7">Main Page</a>
+            <a href="/editprofile" class="nav-item has-text-black is-size-7">Edit Profile</a>
+            <a href="/profile" class="nav-item has-text-black is-size-7">Your Profile</a>
+            <a href="/api/user/logout" class="button is-primary">Sign Out</a>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <h1 class="title">
+        Main page
+    </h1>
+
+
+    <div id="main-grid">
+        <div class="section has-background-light">
+            <img src="../image/user_default.jpg" alt="user image" height="200" width="200">
+            <div class="username is-size-5">Username: ${response.name}</div>
+            <div class="userId is-size-5">User ID: ${response.user_id}</div>
+            <div class="bio is-size-5">Bio: ${response.user_bio}</div>
+            <br><br><br><br>
+
+            <textarea class="textarea is-success" placeholder="message here"></textarea>
+
+            <a class="button is-success" id="button">Send</a>
+        </div>
+
+        <div class="section has-background-white" id="chat-box">
+            <p class="navbar-item is-size-4" id="chat-label">Chat Box</p>
+        </div>
+        <div id="chat"></div>
+
+    </div>
+    <!-- <br><br><br><br><br><br><br><br><br><br> -->
+
+
+
+</section>`);
         });
-            let sendData = function(textObject){
-                $.ajax({
-                method: 'POST',
-                url: 'http://localhost:9000/api/chat',
-                data: textObject
-            }).then(function(data){})
-            };
-            let getChat = function(){
-                $.ajax({
-                method: 'GET',
-                url: 'http://localhost:9000/api/chat'
-            }).then(function(chatlog){
-                console.log(chatlog);
-                for(var log in chatlog.textlog) {
-                   if(chatlog.textlog.hasOwnProperty(log)) {
-                        var logValue = chatlog.textlog[log];
-                        console.log(logValue);
-                        console.log(logValue.log);
-                        $("#chat").append(($("<p>").text(logValue.log)));
-                        scrollSet();
-                    }
-                }
-            });
-        };
-        getChat();
-        </script>
-        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-        </script>
-         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-     </script>
-        <!-- <script src="../js/chat.js"></script> -->
+    </script>
 </body>
 
 </html>

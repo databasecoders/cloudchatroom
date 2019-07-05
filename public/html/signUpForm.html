@@ -18,31 +18,19 @@
 <body>
     <section class="hero is-fullheight">
 
-        <div class="hero-head">
-            <div class="columns is-mobile is-marginless heading has-text-weight-bold">
-                <div class="column left">
-                    <p class="navbar-item has-text-black is-size-2">Chat App</p>
-
-                </div>
-
-                <div class="column right">
-
-                    <a href="/" class="nav-item has-text-black is-size-7">Main Page</a>
-                    <a href="/editprofile" class="nav-item has-text-black is-size-7">Edit Profile</a>
-                    <a href="/create" class="nav-item has-text-black is-size-7">Create Profile</a>
-                    <a href="/profile" class="nav-item has-text-black is-size-7">Your Profile</a>
-                    <a href="/signin" class="button is-primary">Sign In</a>
-                    <a class="button is-primary">Sign Out</a>
-
-                </div>
-            </div>
-        </div>
-
         <section class="section">
             <div class="container has-background-light" id="container">
                 <h1 class="title">
                     Create Your Profile
                 </h1>
+
+                <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="input is-primary" type="name" placeholder="Name" id="name">
+                    </p>
+                    <p style="color:red;" hidden id="nameInvalid">name is invalid</p>
+                </div>
+                <!--  -->
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
                         <input class="input is-primary" type="name" placeholder="Email" id="email">
@@ -51,12 +39,6 @@
                         </span>
                     </p>
                     <p style="color:red;" hidden id="emailInvalid">email address is invalid</p>
-                </div>
-                <!--  -->
-                <div class="field">
-                    <!-- <div class="control">
-                        <input class="input is-info" type="text" placeholder="Info input">
-                    </div> -->
                 </div>
                 <div class="field">
                     <p class="control has-icons-left">
@@ -78,6 +60,15 @@
                     <p style="color:red;" hidden id="passwordEnter">please enter a password</p>
                 </div>
                 <div class="field">
+                    <p class="control has-icons-left">
+                        <input class="input is-success" type="text" placeholder="Bio" id="userBio">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </p>
+                    <p style="color:red;" hidden id="bioInvalid">Please add a brief description</p>
+                </div>
+                <div class="field">
                     <div class="control">
                         <label class="checkbox">
                             <input type="checkbox" id="checkbox">
@@ -97,7 +88,7 @@
                 <div class="field">
                     <section class="section">
                         <p class="control">
-                            <button class="button is-success is-pulled-left signUpButton">
+                            <button class="button is-link signUpButton">
                                 Sign up!
                             </button>
                         </p>
@@ -109,6 +100,7 @@
     </section>
 
     </section>
+    <br><br><br><br><br>
 
 
 
