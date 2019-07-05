@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <script src="http://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <link rel="stylesheet" href="../styles/shared.css">
     <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-storage.js"></script>
+
     <title>Main</title>
 </head>
 
@@ -27,10 +33,10 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+        </script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -88,10 +94,32 @@
         </div>
 
         <div class="section has-background-white" id="chat-box">
-            
-            <p class="navbar-item is-size-4" id="chat-label">Chat Box</p>
+            <div id="chat"></div>
+        <p class="navbar-item is-size-4" id="chat-label">Chat Box</p>
         </div>
-        <div id="chat"></div>
+
+        <div class="section has-background-white" id="picture-box">    
+                <div>
+                    <div id="progress-bar"></div>
+                    <input type="file" id="upload-one-photo-button">
+                    <div id="preview-of-upload1"></div>
+                </div>
+
+                <div>
+                    <div id="progress-bar"></div>
+                    <input type="file" id="upload-two-photo-button">
+                    <div id="preview-of-upload2"></div>
+                </div>
+
+                <div>
+                    <div id="progress-bar"></div>
+                    <input type="file" id="upload-three-photo-button">
+                    <div id="preview-of-upload3"></div>
+                </div>
+            
+        </div>
+        
+        
 
     </div>
     <!-- <br><br><br><br><br><br><br><br><br><br> -->
@@ -99,8 +127,181 @@
 
 
 </section>`);
+
+            // from app.s
+            var firebaseConfig = {
+                apiKey: "AIzaSyAgVab2wUJkERIRCdQVLarTyHZlb3ty3mQ",
+                authDomain: "trildb-ddca5.firebaseapp.com",
+                databaseURL: "https://trildb-ddca5.firebaseio.com",
+                projectId: "trildb-ddca5",
+                storageBucket: "trildb-ddca5.appspot.com",
+                messagingSenderId: "741857016385",
+                appId: "1:741857016385:web:215d4139d7c95875"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+
+            // Reference to storage method of Firebase
+            var storage = firebase.storage()
+
+            // Get element that is the input we will click to upload our profile photo file
+            const uploadOnePhotoButton = document.getElementById(`upload-one-photo-button`);
+            const uploadTwoPhotoButton = document.getElementById(`upload-two-photo-button`);
+            const uploadThreePhotoButton = document.getElementById(`upload-three-photo-button`);
+
+            const progressBar = document.getElementById(`progress-bar`);
+
+            let photoFile1;
+            let photoFile2;
+            let photoFile3;
+
+            uploadOnePhotoButton.addEventListener(`change`, (event) => {
+                console.log(event);
+
+                // Access the chosen file throught the event
+                let file = event.target.files[0];
+                // console.log(event.target.files[0].name);
+
+                // Create a storage reference unique to the user using their UID
+                const storageRef = storage.ref(event.target.files[0].name)
+
+                // Upload file
+                const photoUploadTask = storageRef.put(file)
+                photoUploadTask.on("state_changed", snapshot => {
+                    let percentage = snapshot.bytesTransferred / snapshot.totalBytes * 100
+                    if (percentage < 10) {
+                        progressBar.style.width = `10%`
+                        progressBar.innerHTML = `${percentage.toFixed(0)}%`
+                    } else {
+                        progressBar.style.width = `${percentage}%`
+                        progressBar.innerHTML = `${percentage.toFixed(0)}%`
+                    }
+                },
+                    error = (error) => {
+                        console.log(`error`, error.message)
+                    },
+                    complete = () => {
+                        photoUploadTask.snapshot.ref.getDownloadURL()
+                            .then((url) => {
+                                console.log(url);
+
+                                photoFile1 = url
+                                localStorage.setItem('one_image', photoFile1);
+                                // push to db or something
+
+                                // make a preview image of what was just uploaded
+                                var newImage1 = $('<img>')
+                                newImage1.attr('src', url)
+                                $('#preview-of-upload1').html(newImage1)
+
+                                setTimeout(() => {
+                                    progressBar.style.width = `0%`
+                                }, 1000)
+                            })
+                    })
+            })
+
+
+            // //// second image
+            uploadTwoPhotoButton.addEventListener(`change`, (event) => {
+                console.log(event);
+
+                // Access the chosen file throught the event
+                let file = event.target.files[0];
+                // console.log(event.target.files[0].name);
+
+                // Create a storage reference unique to the user using their UID
+                const storageRef = storage.ref(event.target.files[0].name)
+
+                // Upload file
+                const photoUploadTask = storageRef.put(file)
+                photoUploadTask.on("state_changed", snapshot => {
+                    let percentage = snapshot.bytesTransferred / snapshot.totalBytes * 100
+                    if (percentage < 10) {
+                        progressBar.style.width = `10%`
+                        progressBar.innerHTML = `${percentage.toFixed(0)}%`
+                    } else {
+                        progressBar.style.width = `${percentage}%`
+                        progressBar.innerHTML = `${percentage.toFixed(0)}%`
+                    }
+                },
+                    error = (error) => {
+                        console.log(`error`, error.message)
+                    },
+                    complete = () => {
+                        photoUploadTask.snapshot.ref.getDownloadURL()
+                            .then((url) => {
+                                console.log(url);
+
+                                photoFile2 = url
+                                localStorage.setItem('two_image', photoFile2);
+                                // push to db or something
+
+                                // make a preview image of what was just uploaded
+                                var newImage2 = $('<img>')
+                                newImage2.attr('src', url)
+                                $('#preview-of-upload2').html(newImage2)
+
+                                setTimeout(() => {
+                                    progressBar.style.width = `0%`
+                                }, 1000)
+                            })
+                    })
+            })
+
+
+
+            // ///// third image
+            uploadThreePhotoButton.addEventListener(`change`, (event) => {
+                console.log(event);
+
+                // Access the chosen file throught the event
+                let file = event.target.files[0];
+                // console.log(event.target.files[0].name);
+
+                // Create a storage reference unique to the user using their UID
+                const storageRef = storage.ref(event.target.files[0].name)
+
+                // Upload file
+                const photoUploadTask = storageRef.put(file)
+                photoUploadTask.on("state_changed", snapshot => {
+                    let percentage = snapshot.bytesTransferred / snapshot.totalBytes * 100
+                    if (percentage < 10) {
+                        progressBar.style.width = `10%`
+                        progressBar.innerHTML = `${percentage.toFixed(0)}%`
+                    } else {
+                        progressBar.style.width = `${percentage}%`
+                        progressBar.innerHTML = `${percentage.toFixed(0)}%`
+                    }
+                },
+                    error = (error) => {
+                        console.log(`error`, error.message)
+                    },
+                    complete = () => {
+                        photoUploadTask.snapshot.ref.getDownloadURL()
+                            .then((url) => {
+                                console.log(url);
+
+                                photoFile3 = url
+                                localStorage.setItem('two_image', photoFile3);
+                                // push to db or something
+
+                                // make a preview image of what was just uploaded
+                                var newImage3 = $('<img>')
+                                newImage3.attr('src', url)
+                                $('#preview-of-upload3').html(newImage3)
+
+                                setTimeout(() => {
+                                    progressBar.style.width = `0%`
+                                }, 1000)
+                            })
+                    })
+            })
+
         });
     </script>
+    <!-- <script src="/js/app.js"></script> -->
 </body>
 
 </html>

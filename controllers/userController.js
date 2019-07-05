@@ -20,7 +20,8 @@ router.get("/profile/:id", function (req, res) {
         res.render("profile", {
             user_id: data[0].user_id,
             user_name: data[0].user_email,
-            user_image: data[0].user_image
+            user_image: data[0].user_image,
+            one_image: data[0].one_image,
         });
 
     });
