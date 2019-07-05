@@ -13,7 +13,6 @@ $(document).ready(function () {
         let confirmPassword = $("#confirmPassword").val();
         let email = $("#email").val();
         let bio = $("#userBio").val()
-        console.log(bio)
 
         if (name == "") {
             $("#nameInvalid").show()
