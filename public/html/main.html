@@ -1,82 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <link rel="stylesheet" href="../styles/shared.css">
     <link rel="stylesheet" href="../styles/main.css">
     <title>Main</title>
 </head>
+
 <body>
-    <section class="hero is-fullheight">
-        <div class="hero-head">
-            <div class="columns is-mobile is-marginless heading has-text-weight-bold">
-                <div class="column left">
-                    <p class="navbar-item has-text-black is-size-2" id="title">Chat App</p>
 
-                </div>
-                <div class="column right">
-                    <a href="/" class="nav-item has-text-black is-size-7">Main Page</a>
-                    <a href="/editprofile" class="nav-item has-text-black is-size-7">Edit Profile</a>
-                    <a href="/create" class="nav-item has-text-black is-size-7">Create Profile</a>
-                    <a href="/profile" class="nav-item has-text-black is-size-7">Your Profile</a>
-                    <a href="/signin" class="button is-primary">Sign In</a>
-                    <a class="button is-primary">Sign Out</a>
-
-                    <div class="dropdown">
-
-                        <div class="dropdown is-right is-hoverable">
-                            <div class="dropdown-trigger">
-
-                                <figure class="navbar-item image has-text-black is-size-2 center">
-                                    <i class="fas fa-bars" style="width: 2rem; height: 2rem;"></i>
-                                </figure>
-                            </div>
-                            <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                                <div class="dropdown-content ">
-                                    <div class="dropdown-item">
-                                        <a href="main.html">Main Page</a>
-                                        <br>
-                                        <a href="newProfileForm.html">Edit Profile</a>
-                                        <br>
-                                        <a href="signUpForm.html">Create Profile</a>
-                                        <br>
-                                        <a href="profile.html">Your Profile</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div> -->
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <h1 class="title">
-                Main page
-            </h1>
-            <div id="main-grid">
-                <div class="section has-background-light">
-                    <img src="../image/user_default.jpg" alt="user image" height="200" width="200">
-                    <div class="username is-size-5">Username:</div>
-
-                    <div class="bio is-size-5">Bio:</div>
-                    <br><br><br><br>
-
-                    <div class="date_joined is-size-5">Date Joined:</div>
-                    <textarea id="userInput" class="textarea is-success" placeholder="message here"></textarea>
-
-                    <button id="chatSubmit">Submit</button>
-                </div>
-
-                <div class="section has-background-white" id="chat-box">
-                    <p class="navbar-item is-size-4" id="chat-label">Chat Box</p>
-                    <div id="chat"></div>
-                </div>
-            </div>
-    </section>
+    <div id="main"></div>
 
     <nav class="navbar is-transparent is-fixed-bottom is-primary is-size-7 center">
         <footer>
@@ -89,10 +27,10 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script>
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
