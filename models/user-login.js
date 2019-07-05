@@ -23,7 +23,8 @@ let user = {
                 user_password: hashedPassword.hash,
                 salt: hashedPassword.salt,
                 user_bio: request.body.bio,
-                user_image: request.body.user_image
+                user_image: request.body.user_image,
+                one_image: request.body.one_image,
             };
             users.insertNew(userRequest, function (error, result) {
                 if (error) {

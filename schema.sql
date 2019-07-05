@@ -16,7 +16,10 @@ user_password varchar
   (30),
   salt varchar
   (1000),
-user_image longblob,
+user_image varchar
+  (1000),
+  one_image varchar
+  (1000),
 user_bio varchar
   (1000),
 PRIMARY KEY
