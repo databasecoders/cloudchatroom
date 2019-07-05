@@ -34,7 +34,7 @@ $(document).ready(function () {
                 email: $("#email").val().trim(),
                 bio: $("#userBio").val().trim(),
                 user_image: localStorage.getItem("user_image"),
-                one_image: localStorage.getItem("one_image"),
+
             }
             console.log('*****', newUserInfo);
             $.ajax({
