@@ -52,7 +52,8 @@ module.exports = function (app) {
     app.post("/api/chat", function (request, response) {
         console.log("This api route was hit");
         console.log("Type: Post")
-        console.log(request.body);
+        console.log(request.body.userInput);
+        chat.postingText(request, response);
         //console.log(`You sent ${id}`);
         //chat.postingText(request, response);
     });
@@ -77,17 +78,18 @@ module.exports = function (app) {
     //     log.logout(request, response)
     // })
 
-    // app.delete("/api/users/", function (request, response) {
-    //     user.deleteOne(request, response)
-    // })
+    app.delete("/api/users/", function (request, response) {
+        users.deleteOne(request, response)
+    })
 
-    // app.put("/api/users/", function (request, response) {
-    //     user.updateOne(request, response)
-    // })
+    app.put("/api/users/", function (request, response) {
+        users.updateOne(request, response)
+    })
 
 
 
 }
 
+//testing testing
 
 //multer (research)
