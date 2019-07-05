@@ -64,7 +64,7 @@ let users = {
     getMyself: function (session, callback) {
         let query = {
             table: 'users',
-            columns: ['user_email', 'user_id', 'name', 'user_password', 'user_image', 'user_bio'],
+            columns: ['user_email', 'user_id', 'name', 'user_password', 'user_image', 'user_bio', 'salt'],
             where: [{
                 session: session
             }]
