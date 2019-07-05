@@ -59,9 +59,7 @@
 
             <a href="/" class="nav-item has-text-black is-size-7">Main Page</a>
             <a href="/editprofile" class="nav-item has-text-black is-size-7">Edit Profile</a>
-            <a href="/create" class="nav-item has-text-black is-size-7">Create Profile</a>
             <a href="/profile" class="nav-item has-text-black is-size-7">Your Profile</a>
-            <a href="/signin" class="button is-primary">Sign In</a>
             <a href="/api/user/logout" class="button is-primary">Sign Out</a>
 
 
@@ -80,12 +78,11 @@
     <div id="main-grid">
         <div class="section has-background-light">
             <img src="../image/user_default.jpg" alt="user image" height="200" width="200">
-            <div class="username is-size-5">Username: ${response.user_email}</div>
-
-            <div class="bio is-size-5">Bio:</div>
+            <div class="username is-size-5">Username: ${response.name}</div>
+            <div class="userId is-size-5">User ID: ${response.user_id}</div>
+            <div class="bio is-size-5">Bio: ${response.user_bio}</div>
             <br><br><br><br>
 
-            <div class="date_joined is-size-5">Date Joined:</div>
             <textarea class="textarea is-success" placeholder="message here"></textarea>
 
             <a class="button is-success" id="button">Send</a>
