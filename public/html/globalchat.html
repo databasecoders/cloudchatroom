@@ -48,7 +48,6 @@
             }
         }).then(function (response) {
             userName = response.name
-            console.log(userName);
             $('#main').html(`    
             
             <section class="hero is-fullheight">
@@ -106,12 +105,15 @@
 
 `);
 //Variables
-var userImage = response.user_image;
-//scroll stuff
-let scrolltoBottom = function(){
-    var element = document.getElementById("chatbox");
-    element.scrollTop = element.scrollHeight;
-};
+    var userImage = response.user_image;
+
+ //scroll stuff
+
+    function scrolltoBottom(){
+               var element = document.getElementById("chatbox");
+                element.scrollTop = element.scrollHeight;
+                };
+
  // Initialize Firebase
     var config = {
         apiKey: "AIzaSyD7KxV0fowVohhM4cyInzNhdRzNoMwzuJg",
@@ -133,16 +135,16 @@ let scrolltoBottom = function(){
             });
 
         $(document).keypress(function(event){
-        var keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode == '13'){
-            pushChat();
-        }
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13'){
+                pushChat();
+                }
         });
 
         function UpdateChatBox(chat, time, user){
         var TnC = `${user}, ${time}: ${chat}`;
         $("#chatbox").append($("<p>").text(TnC));
-        }
+        };
 
         function pushChat(){
         var dChat = $("#userInput").val();
@@ -170,6 +172,7 @@ let scrolltoBottom = function(){
             UpdateChatBox(dChat, dTime, dUser);
             scrolltoBottom();
         });
+    }
 
             function pushChat() {
                 var dChat = $("#userInput").val();
