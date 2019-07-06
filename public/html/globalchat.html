@@ -175,41 +175,7 @@
             scrolltoBottom();
         });
     }
-
-        function pushChat() {
-            var dChat = $("#userInput").val();
-            var dUser = userName;
-            console.log(dChat);
-            if (dChat == "" || dChat == null) {
-                alert("Please enter proper text.")
-            } else {
-                console.log("Current Text in chat is:")
-                console.log(dChat);
-                var dTime = moment().format("hh:mm");
-                console.log("Current Time is: ")
-                console.log(dTime);
-                $("#userInput").val("");
-                database.ref().push({
-                    'dChat': dChat,
-                    'dTime': dTime,
-                    'dUser': dUser
-                });
-            };
-        };
-
-            function getChat() {
-                database.ref().on("child_added", function (child) {
-                    var dChat = child.val().dChat;
-                    var dTime = child.val().dTime;
-                    var dUser = child.val().dUser;
-                    console.log(dChat);
-                    console.log(dTime);
-                    console.log(dUser);
-                    UpdateChatBox(dChat, dTime, dUser);
-                    scrolltoBottom();
-                });
-            }
-        });
+});
     </script>
 </body>
 
