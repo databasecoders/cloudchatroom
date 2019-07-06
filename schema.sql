@@ -20,6 +20,10 @@ user_image varchar
   (1000),
   one_image varchar
   (1000),
+  two_image varchar
+  (1000),
+  three_image varchar
+  (1000),
 user_bio varchar
   (1000),
 PRIMARY KEY
