@@ -1,4 +1,4 @@
-let hashPass = require('hashPass');
+let hashPass = require('hashpass');
 let uuidv1 = require('uuid/v1');
 let users = require('./users');
 
