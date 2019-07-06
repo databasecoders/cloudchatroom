@@ -35,7 +35,22 @@ margin-top: -20px;
 }
 
 
-#chat {
+#chatbox {
     overflow: auto;
     height: 300px;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+}
+
+#chatbox p{
+    border-bottom: .5px dotted black;
+}
+
+#userInput {
+    margin-bottom: 10px;
+}
+
+#invalid-input{
+    color: red;
 }
