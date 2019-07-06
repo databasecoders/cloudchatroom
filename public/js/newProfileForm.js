@@ -11,5 +11,4 @@ $("#update-button").on("click", function () {
         user_bkgimage: bkgimage,
         user_bio: bio
     }
-    console.log(updateProfile)
 });
