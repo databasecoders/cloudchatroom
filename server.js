@@ -6,7 +6,6 @@ const path = require("path")
 var exphbs = require("express-handlebars");
 
 var PORT = process.env.PORT || 9000;
-// var config = require('./config/config');
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({
