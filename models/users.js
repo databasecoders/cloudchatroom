@@ -16,6 +16,8 @@ let users = {
         };
         orm.selectUser(queryObj, function (error, data) {
             cb(data);
+            console.log(data);
+            console.log("get one" + data[0].user_id);
         });
     },
     insertNew: function (user, callback) {
@@ -31,7 +33,7 @@ let users = {
             table: 'users',
             where: [{
                 user_email: email
-            }]
+            }] //Update
         };
         orm.select(query, callback);
     },
@@ -43,7 +45,7 @@ let users = {
             },
             where: [{
                 user_email: email.toLowerCase()
-            }]
+            }] //Update
         };
         orm.update(query, callback);
     },
@@ -78,7 +80,7 @@ let users = {
             }]
         };
         orm.select(query, callback);
-    }
+    },
 };
 
 module.exports = users;

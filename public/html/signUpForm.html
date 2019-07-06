@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Create New</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="styles/debug.css"> -->
     <link rel="stylesheet" href="../styles/signUpForm.css">
     <link rel="stylesheet" href="../styles/shared.css">
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js"></script>
@@ -18,7 +19,7 @@
     <section class="hero is-fullheight">
 
         <section class="section">
-            <div class="container has-background-light" id="container" style="margin-bottom: 30px">
+            <div class="container has-background-light" id="container">
                 <h1 class="title">
                     Create Your Profile
                 </h1>
@@ -29,7 +30,7 @@
                     </p>
                     <p style="color:red;" hidden id="nameInvalid">name is invalid</p>
                 </div>
-
+                <!--  -->
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
                         <input class="input is-primary" type="name" placeholder="Email" id="email">
@@ -74,7 +75,7 @@
                 </div>
 
                 <div class="field">
-                    <div class="control" style="margin-top: 20px">
+                    <div class="control">
                         <label class="checkbox">
                             <input type="checkbox" id="checkbox">
 
@@ -84,10 +85,14 @@
                     </div>
                 </div>
                 <p style="color:red;" hidden id="checkboxInvalid">please agree to our terms and conditions</p>
+
+
+
+
                 <div class="field">
                     <section class="section">
                         <p class="control">
-                            <button class="button is-link signUpButton" style="margin-bottom: 15px">
+                            <button class="button is-link signUpButton">
                                 Sign up!
                             </button>
                         </p>
@@ -99,6 +104,9 @@
     </section>
 
     </section>
+    <br><br><br><br><br>
+
+
 
     <nav class="navbar is-transparent is-fixed-bottom is-primary is-size-7 center">
         <footer>
@@ -112,10 +120,10 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+        </script>
     <script type="text/javascript" src="../js/signUpForm.js"></script>
     <script type="text/javascript" src="../js/app.js"></script>
 </body>

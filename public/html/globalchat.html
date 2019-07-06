@@ -63,7 +63,7 @@
         <div class="column right">
 
 
-            <a href="/main" class="nav-item has-text-black is-size-7">Main Page</a>
+            <a href="/" class="nav-item has-text-black is-size-7">Main Page</a>
             <a href="/editprofile" class="nav-item has-text-black is-size-7">Edit Profile</a>
             <a href="/profile" class="nav-item has-text-black is-size-7">Your Profile</a>
             <a href="/api/user/logout" class="button is-primary">Sign Out</a>
@@ -123,14 +123,14 @@ let scrolltoBottom = function(){
         appId: "1:1032153558028:web:0073640b09cf08a6"
         };
 
-            firebase.initializeApp(config);
+        firebase.initializeApp(config);
 
-            var database = firebase.database();
-            getChat();
+        var database = firebase.database();
+        getChat();
 
-            $(document.body).on("click", "#chatSubmit", function () {
-                pushChat();
-            });
+        $(document.body).on("click", "#chatSubmit", function(){
+        pushChat();
+        });
 
         $(document).keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -158,6 +158,8 @@ let scrolltoBottom = function(){
             'dTime': dTime,
             'dUser': dUser
             });
+        }
+        };
 
         function getChat(){
         database.ref().on("child_added", function(child){
@@ -171,39 +173,8 @@ let scrolltoBottom = function(){
             scrolltoBottom();
         });
 
-            function pushChat() {
-                var dChat = $("#userInput").val();
-                var dUser = userName;
-                console.log(dChat);
-                if (dChat == "" || dChat == null) {
-                    alert("Please enter proper text.")
-                } else {
-                    console.log("Current Text in chat is:")
-                    console.log(dChat);
-                    var dTime = moment().format("hh:mm");
-                    console.log("Current Time is: ")
-                    console.log(dTime);
-                    $("#userInput").val("");
-                    database.ref().push({
-                        'dChat': dChat,
-                        'dTime': dTime,
-                        'dUser': dUser
-                    });
-                }
-            };
+        }
 
-            function getChat() {
-                database.ref().on("child_added", function (child) {
-                    var dChat = child.val().dChat;
-                    var dTime = child.val().dTime;
-                    var dUser = child.val().dUser;
-                    console.log(dChat);
-                    console.log(dTime);
-                    console.log(dUser);
-                    UpdateChatBox(dChat, dTime, dUser);
-                });
-
-            }
         });
     </script>
 </body>
