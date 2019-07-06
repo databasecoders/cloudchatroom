@@ -5,17 +5,15 @@
             <div class="column left">
                 <p class="navbar-item has-text-black is-size-2">Chat App</p>
                 <!-- </div>
-
                 <div class="column center ">
-
                 </div> -->
 
                 <div class="column right">
-                    <a href="main.html" class="nav-item has-text-black is-size-7">Main Page</a>
+                    {{!-- <a href="main.html" class="nav-item has-text-black is-size-7">Main Page</a>
                     <a href="newProfileForm.html" class="nav-item has-text-black is-size-7">Edit Profile</a>
                     <a href="signUpForm.html" class="nav-item has-text-black is-size-7">Create Profile</a>
-                    <a href="profile.html" class="nav-item has-text-black is-size-7">Your Profile</a>
-                    <a href="signIn.html" class="button is-primary">Sign In</a>
+                    <a href="profile.html" class="nav-item has-text-black is-size-7">Your Profile</a> --}}
+                    {{!-- <a href="signIn.html" class="button is-primary">Sign In</a> --}}
                     <a class="button is-primary">Sign Out</a>
                     <div class="dropdown">
                         <div class="dropdown is-right is-hoverable">
@@ -43,15 +41,36 @@
             </div>
         </div>
         <div class="container">
-            <div id="chat-area">
-                <h1>{{data.user_name}}</h1>
-                <h1>user: {{this.user_id}}</h1>
-                <h1>user: {{this.user_name}}</h1>
-                <h1>user: <img src="{{this.user_image}}"></h1>
-                {{!-- <h1>user: <img src="{{this.one_image}}"></h1> --}}
-
+            <div class="column">
+                <p class="bd-notification is-info">
+                    <h3 class="has-text-black is-size-2" style="margin-bottom: 30px;">{{this.name}}'s Profile Page</h3>
+                </p>
+                <div class="columns is-mobile">
+                    <div class="column is-half">
+                        <p class="bd-notification is-info">
+                            <img src="{{this.user_image}}" style="margin-top: 10px">
+                        </p>
+                    </div>
+                    <div class="column" style="background-color: lightblue">
+                        <p class="bd-notification is-info">
+                            <h1>Email: {{this.user_email}}</h1>
+                            <h1>user: {{this.user_id}}</h1>
+                        </p>
+                    </div>
+                    <div class="column" style="background-color: lightblue">
+                        <p class="bd-notification is-info">
+                            <h1>About: {{this.user_bio}}</h1>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+    {{!-- <div class="container">
+        <div id="chat-area">
+            <h1>{{data.user_name}}</h1>
+        </div>
+    </div> --}}
 
 </section>
 
@@ -65,6 +84,7 @@
 
 
 <script src="../js/front.js"></script> -->
+<script src="https://kit.fontawesome.com/20e6daebeb.js"></script>
 <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
