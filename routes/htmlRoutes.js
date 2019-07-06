@@ -25,4 +25,8 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, "../public/html/photo.html"))
     });
 
+    app.get("/globalchat", function(rend, res){
+        res.sendFile(path.join(__dirname, "../public/html/globalchat.html"))
+    });
+
 };
