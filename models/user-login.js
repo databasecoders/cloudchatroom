@@ -41,12 +41,7 @@ let user = {
                         });
                     }
                 } else {
-                    // response.json({
-                    //     user_id: result.insertId,
-                    //     email: userRequest.email
-                    // });
                     response.redirect('/')
-
                 }
             });
         }
