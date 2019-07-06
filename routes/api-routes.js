@@ -2,6 +2,7 @@ const user = require("./../models/user-login")
 const chat = require("../FirebaseStuff/firebase-chat");
 const authorizer = require("../config/authorizer")
 let users = require('../models/users.js');
+const router = require('express').Router();
 
 module.exports = function (app) {
     app.post('/api/user', function (request, response) {
@@ -49,40 +50,12 @@ module.exports = function (app) {
     })
 
     app.get("/api/chat", function (request, response) {
-        console.log("This api route was hit");
-        console.log("Type: Get")
         chat.gettingChat(request, response);
     })
 
     app.post("/api/chat", function (request, response) {
-        console.log("This api route was hit");
-        console.log("Type: Post")
-        console.log(request.body.userInput);
         chat.postingText(request, response);
-        //console.log(`You sent ${id}`);
-        //chat.postingText(request, response);
     });
-
-    // app.get("/api/users", function (request, response) {
-    //     user.getAll(request, response)
-    // });
-
-    // app.get("/api/users/:id", function (request, response) {
-    //     user.getOne(request, response)
-    // });
-
-    // app.post("/api/users/create", function (request, response) {
-    //     user.insertOne(request, response)
-    // });
-
-    // app.post("/api/users/login", function (request, response) {
-    //     log.login(request, response)
-    // })
-
-    // app.delete("/api/users/logout", function (request, response) {
-    //     log.logout(request, response)
-    // })
-
     app.delete("/api/users/", function (request, response) {
         users.deleteOne(request, response)
     })
@@ -90,11 +63,4 @@ module.exports = function (app) {
     app.put("/api/users/", function (request, response) {
         users.updateOne(request, response)
     })
-
-
-
 }
-
-//testing testing
-
-//multer (research)
