@@ -109,7 +109,6 @@
 </section>
 
 `);
-            console.log("Hello");
             // Initialize Firebase
             var config = {
                 apiKey: "AIzaSyD7KxV0fowVohhM4cyInzNhdRzNoMwzuJg",
@@ -178,70 +177,6 @@
 
         });
     </script>
-    <!-- <script>
-    console.log(userName);
-                 // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyD7KxV0fowVohhM4cyInzNhdRzNoMwzuJg",
-        authDomain: "globalchat-99987.firebaseapp.com",
-        databaseURL: "https://globalchat-99987.firebaseio.com",
-        projectId: "globalchat-99987",
-        storageBucket: "globalchat-99987.appspot.com",
-        messagingSenderId: "1032153558028",
-        appId: "1:1032153558028:web:0073640b09cf08a6"
-        };
-
-        firebase.initializeApp(config);
-
-        var database = firebase.database();
-        getChat();
-
-        $(document.body).on("click", "#chatSubmit", function(){
-        pushChat();
-        });
-
-        $(document).keypress(function(event){
-        var keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode == '13'){
-            pushChat();
-        }
-        });
-
-        function UpdateChatBox(chat, time, response){
-        var TnC =  time + " " + chat;
-        $("#chatbox").append($("<p>").text(TnC));
-        }
-
-        function pushChat(){
-        var dChat = $("#userInput").val();
-        console.log(dChat);
-        if (dChat == "" || dChat == null){
-            alert("Please enter proper text.")
-        } else {
-            console.log("Current Text in chat is:")
-            console.log(dChat);
-            var dTime = moment().format("HH:mm");
-            console.log("Current Time is: ")
-            console.log(dTime);
-            $("#userInput").val("");
-            database.ref().push({
-            'dChat': dChat,
-            'dTime': dTime
-            });
-        }
-        };
-
-        function getChat(){
-        database.ref().on("child_added", function(child){
-            var dChat = child.val().dChat;
-            var dTime = child.val().dTime;
-            console.log(dChat);
-            console.log(dTime);
-            UpdateChatBox(dChat, dTime);
-        });
-
-        }
-    </script> -->
 </body>
 
 </html>
