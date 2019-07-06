@@ -61,6 +61,20 @@ let users = {
         };
         orm.update(query, callback);
     },
+    updatePhotos: function (email, callback) {
+        let query = {
+            table: users,
+            data: {
+                one_image: request.body.one_image,
+                two_image: request.body.two_image,
+                three_image: request.body.three_image
+            },
+            where: [{
+                email: email
+            }]
+        };
+        orm.update(query, callback);
+    },
     getMyself: function (session, callback) {
         let query = {
             table: 'users',
@@ -80,7 +94,7 @@ let users = {
             }]
         };
         orm.select(query, callback);
-    },
+    }
 };
 
 module.exports = users;
