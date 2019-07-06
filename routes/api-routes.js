@@ -43,6 +43,11 @@ module.exports = function (app) {
     ) {
         user.getUserByID(request, response);
     });
+
+    app.post('/api/user', function (request, response) {
+        users.updatePhotos(request, response)
+    })
+
     app.get("/api/chat", function (request, response) {
         console.log("This api route was hit");
         console.log("Type: Get")
