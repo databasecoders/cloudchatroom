@@ -138,7 +138,7 @@
             var keycode = (event.keyCode ? event.keyCode : event.which);
             if (keycode == '13'){
                 pushChat();
-                }
+            }
         });
 
         function UpdateChatBox(chat, time, user){
@@ -155,11 +155,13 @@
         } else {
             var dTime = moment().format("hh:mm");
             $("#userInput").val("");
-            database.ref().push({
-            'dChat': dChat,
-            'dTime': dTime,
-            'dUser': dUser
-            });
+                database.ref().push({
+                'dChat': dChat,
+                'dTime': dTime,
+                'dUser': dUser
+                });
+            };
+        };
 
         function getChat(){
         database.ref().on("child_added", function(child){
@@ -174,26 +176,26 @@
         });
     }
 
-            function pushChat() {
-                var dChat = $("#userInput").val();
-                var dUser = userName;
+        function pushChat() {
+            var dChat = $("#userInput").val();
+            var dUser = userName;
+            console.log(dChat);
+            if (dChat == "" || dChat == null) {
+                alert("Please enter proper text.")
+            } else {
+                console.log("Current Text in chat is:")
                 console.log(dChat);
-                if (dChat == "" || dChat == null) {
-                    alert("Please enter proper text.")
-                } else {
-                    console.log("Current Text in chat is:")
-                    console.log(dChat);
-                    var dTime = moment().format("hh:mm");
-                    console.log("Current Time is: ")
-                    console.log(dTime);
-                    $("#userInput").val("");
-                    database.ref().push({
-                        'dChat': dChat,
-                        'dTime': dTime,
-                        'dUser': dUser
-                    });
-                }
+                var dTime = moment().format("hh:mm");
+                console.log("Current Time is: ")
+                console.log(dTime);
+                $("#userInput").val("");
+                database.ref().push({
+                    'dChat': dChat,
+                    'dTime': dTime,
+                    'dUser': dUser
+                });
             };
+        };
 
             function getChat() {
                 database.ref().on("child_added", function (child) {
@@ -204,8 +206,8 @@
                     console.log(dTime);
                     console.log(dUser);
                     UpdateChatBox(dChat, dTime, dUser);
+                    scrolltoBottom();
                 });
-
             }
         });
     </script>
